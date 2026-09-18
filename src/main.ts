@@ -20,7 +20,7 @@ function mountHeroFunnelSafely() {
 if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   mountHeroFunnelSafely();
 } else {
-  window.setTimeout(mountHeroFunnelSafely, 350);
+  window.setTimeout(mountHeroFunnelSafely, 700);
 }
 
 // ---- Hero chart scroll-collapse -------------------------------------------
@@ -77,24 +77,26 @@ if (methodSeq) {
       const texts = q(".seq-text");
       const arrows = q(".seq-arrow");
       const outs = q(".seq-out");
-      const line = methodSeq.querySelector<HTMLElement>(".seq-line");
+      const lines = q(".seq-line");
 
       // Mirror the CSS hidden states inline so GSAP starts from known values.
       gsap.set(dots, { opacity: 0, scale: 0.6 });
       gsap.set(texts, { opacity: 0, y: 16 });
       gsap.set(arrows, { clipPath: "inset(0 100% 0 0)" });
       gsap.set(outs, { opacity: 0, y: 10 });
-      if (line) gsap.set(line, { scaleY: 0, transformOrigin: "top" });
+      gsap.set(lines, { scaleY: 0, transformOrigin: "top" });
 
       const tl = gsap.timeline({
         scrollTrigger: { trigger: methodSeq, start: "top 70%", once: true },
       });
 
-      if (line) tl.to(line, { scaleY: 1, duration: 1.3, ease: "none" }, 0);
-      tl.to(dots, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)", stagger: 0.28 }, 0);
-      tl.to(texts, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", stagger: 0.28 }, 0.1);
+      const rowStagger = 0.28;
+      tl.to(lines, { scaleY: 1, duration: 0.3, ease: "none", stagger: rowStagger }, 0.3);
+      tl.to(dots, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)", stagger: rowStagger }, 0);
+      tl.to(texts, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", stagger: rowStagger }, 0.1);
 
-      tl.addLabel("arrows", ">-0.25");
+      // Arrows start as soon as the 3rd dot begins animating.
+      tl.addLabel("arrows", 2 * rowStagger);
       arrows.forEach((arrow, i) => {
         const start = i * 0.14;
         tl.to(arrow, { clipPath: "inset(0 0% 0 0)", duration: 0.3, ease: "power2.out" }, `arrows+=${start}`);
@@ -161,7 +163,16 @@ if ("IntersectionObserver" in window) {
     },
     { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
   );
-  revealEls.forEach((el) => io.observe(el));
+  revealEls.forEach((el) => {
+    // Elements pinned to the bottom edge of the first screen (e.g. the
+    // "Worked alongside" strip) never clear the observer's bottom margin
+    // without scrolling, so they are revealed on a timer instead.
+    if (el.hasAttribute("data-reveal-immediate")) {
+      window.setTimeout(() => el.classList.add("is-visible"), Number(el.dataset.delay ?? 0) * 1000);
+    } else {
+      io.observe(el);
+    }
+  });
 
   // Safety net: if an element is somehow never intersected (e.g. a section
   // shorter than the 15% threshold never gets scrolled past), don't leave it

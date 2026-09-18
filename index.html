@@ -65,8 +65,10 @@
 
   <main id="top" class="overflow-x-hidden w-full max-w-full">
 
+    <!-- Hero + "Worked alongside" strip fill exactly one viewport, so the strip sits right at the bottom edge. -->
+    <div class="min-h-[100svh] flex flex-col">
     <!-- ============================= HERO ============================= -->
-    <section data-hero class="relative pt-44 pb-28 md:pt-56 md:pb-40">
+    <section data-hero class="relative flex-1 flex items-center pt-28 pb-10 md:pt-32 md:pb-14">
       <div class="pointer-events-none absolute inset-0 overflow-hidden -z-10">
         <div
           class="absolute inset-0"
@@ -74,7 +76,7 @@
         ></div>
       </div>
 
-      <div class="wrap grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div class="wrap w-full grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
         <div class="lg:col-span-7">
           <h1 class="reveal max-w-2xl text-[2.75rem] leading-[1.05] md:text-6xl lg:text-[4rem] tracking-tight font-semibold text-ink">
             neuvosight
@@ -102,8 +104,8 @@
     </section>
 
     <!-- ============================= TRUST MARQUEE ============================= -->
-    <section class="border-y border-ink/[0.06] py-7 reveal">
-      <div class="wrap flex items-center gap-8">
+    <section class="border-y border-ink/[0.06] py-7 reveal" data-delay="1.0" data-reveal-immediate>
+      <div class="flex items-center gap-8 pl-6 md:pl-10">
         <span class="hidden md:block shrink-0 text-xs font-semibold uppercase tracking-[0.16em] text-ink/40">Worked alongside</span>
         <div class="overflow-hidden flex-1 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
           <div data-quote-track-ignore class="marquee-track flex items-center w-max text-ink/35 font-semibold text-lg tracking-tight">
@@ -119,6 +121,7 @@
         </div>
       </div>
     </section>
+    </div>
 
     <!-- ============================= OUR OFFER ============================= -->
     <section id="offer" class="py-24 md:py-32">
@@ -159,12 +162,11 @@
         </div>
 
         <div data-method-seq class="mt-16 relative">
-          <div class="seq-line hidden md:block absolute left-[27px] top-3 bottom-3 w-px bg-gradient-to-b from-blue-light via-amber to-rose"></div>
-
           <div class="space-y-10 md:space-y-14">
             <div class="grid md:grid-cols-12 gap-5 md:gap-8 items-start">
-              <div class="md:col-span-1 flex md:justify-center">
+              <div class="relative md:self-stretch md:col-span-1 flex md:justify-center">
                 <span class="seq-dot w-14 h-14 rounded-full bg-blue-lightest text-blue font-semibold flex items-center justify-center shrink-0 ring-4 ring-white">01</span>
+                <div class="seq-line hidden md:block absolute left-[calc(50%-0.5px)] top-14 -bottom-14 w-px bg-gradient-to-b from-blue-light to-blue"></div>
               </div>
               <div class="seq-text md:col-span-6">
                 <h3 class="text-xl font-semibold text-ink">Idea Triage</h3>
@@ -181,8 +183,9 @@
             </div>
 
             <div class="grid md:grid-cols-12 gap-5 md:gap-8 items-start">
-              <div class="md:col-span-1 flex md:justify-center">
+              <div class="relative md:self-stretch md:col-span-1 flex md:justify-center">
                 <span class="seq-dot w-14 h-14 rounded-full bg-blue text-white font-semibold flex items-center justify-center shrink-0 ring-4 ring-white">02</span>
+                <div class="seq-line hidden md:block absolute left-[calc(50%-0.5px)] top-14 -bottom-14 w-px bg-gradient-to-b from-blue to-amber"></div>
               </div>
               <div class="seq-text md:col-span-6">
                 <h3 class="text-xl font-semibold text-ink">Problem &amp; Value Validation</h3>
@@ -199,8 +202,9 @@
             </div>
 
             <div class="grid md:grid-cols-12 gap-5 md:gap-8 items-start">
-              <div class="md:col-span-1 flex md:justify-center">
+              <div class="relative md:self-stretch md:col-span-1 flex md:justify-center">
                 <span class="seq-dot w-14 h-14 rounded-full bg-amber text-white font-semibold flex items-center justify-center shrink-0 ring-4 ring-white">03</span>
+                <div class="seq-line hidden md:block absolute left-[calc(50%-0.5px)] top-14 -bottom-14 w-px bg-gradient-to-b from-amber to-rose"></div>
               </div>
               <div class="seq-text md:col-span-6">
                 <h3 class="text-xl font-semibold text-ink">MVP &amp; Market Validation</h3>
@@ -217,7 +221,7 @@
             </div>
 
             <div class="grid md:grid-cols-12 gap-5 md:gap-8 items-start">
-              <div class="md:col-span-1 flex md:justify-center">
+              <div class="relative md:self-stretch md:col-span-1 flex md:justify-center">
                 <span class="seq-dot w-14 h-14 rounded-full bg-rose text-white font-semibold flex items-center justify-center shrink-0 ring-4 ring-white">04</span>
               </div>
               <div class="seq-text md:col-span-6">
@@ -239,23 +243,26 @@
     </section>
 
     <!-- ============================= TRACK RECORD ============================= -->
-    <section class="py-20 md:py-24 bg-ink text-white">
-      <div class="wrap grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
-        <div class="reveal">
-          <p class="text-4xl md:text-5xl font-semibold tracking-tight"><span data-count-to="5" data-suffix="M">0M</span><span class="text-amber">€</span></p>
-          <p class="mt-2 text-sm text-white/55">Secured from internal innovation fund for project execution</p>
+    <section class="py-24 md:py-32 bg-ink text-white">
+      <div class="wrap grid lg:grid-cols-12 gap-14 lg:gap-16 items-center">
+        <div class="reveal lg:col-span-6">
+          <p class="text-[6.5rem] sm:text-[9rem] lg:text-[11rem] font-semibold tracking-tighter leading-none text-rose"><span data-count-to="50" data-suffix="+">0+</span></p>
+          <p class="mt-6 max-w-sm text-lg leading-relaxed text-white/65">Structured validation projects delivered</p>
         </div>
-        <div class="reveal" data-delay="0.08">
-          <p class="text-4xl md:text-5xl font-semibold tracking-tight"><span data-count-to="50" data-suffix="+">0+</span></p>
-          <p class="mt-2 text-sm text-white/55">Structured validation projects delivered</p>
-        </div>
-        <div class="reveal" data-delay="0.16">
-          <p class="text-4xl md:text-5xl font-semibold tracking-tight"><span data-count-to="14" data-suffix="">0</span></p>
-          <p class="mt-2 text-sm text-white/55">Pilots successfully launched</p>
-        </div>
-        <div class="reveal" data-delay="0.24">
-          <p class="text-4xl md:text-5xl font-semibold tracking-tight"><span data-count-to="2" data-suffix="">0</span></p>
-          <p class="mt-2 text-sm text-white/55">Products integrated into global corporate portfolios</p>
+
+        <div class="lg:col-span-6">
+          <div class="reveal flex items-center gap-6 md:gap-10 py-7" data-delay="0.1">
+            <p class="w-28 md:w-36 shrink-0 text-5xl md:text-6xl font-semibold tracking-tight text-rose"><span data-count-to="5" data-suffix="M">0M</span><span>&euro;</span></p>
+            <p class="text-base leading-relaxed text-white/60">Secured from internal innovation fund for project execution</p>
+          </div>
+          <div class="reveal flex items-center gap-6 md:gap-10 py-7" data-delay="0.2">
+            <p class="w-28 md:w-36 shrink-0 text-5xl md:text-6xl font-semibold tracking-tight text-rose"><span data-count-to="14" data-suffix="">0</span></p>
+            <p class="text-base leading-relaxed text-white/60">Pilots successfully launched</p>
+          </div>
+          <div class="reveal flex items-center gap-6 md:gap-10 py-7" data-delay="0.3">
+            <p class="w-28 md:w-36 shrink-0 text-5xl md:text-6xl font-semibold tracking-tight text-rose"><span data-count-to="2" data-suffix="">0</span></p>
+            <p class="text-base leading-relaxed text-white/60">Products integrated into global corporate portfolios</p>
+          </div>
         </div>
       </div>
     </section>

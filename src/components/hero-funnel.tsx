@@ -21,8 +21,8 @@ function HeroFunnel() {
       showLabels={true}
       labelLayout="spread"
       grid={false}
-      staggerDelay={0.06}
-      enterTransition={{ type: "tween", duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+      staggerDelay={0.14}
+      enterTransition={{ type: "tween", duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
       style={{ aspectRatio: "1.4 / 1" }}
     />
   );
