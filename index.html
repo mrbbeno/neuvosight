@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>document.documentElement.classList.add('js');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>neuvosight</title>
+  <meta name="description" content="We turn innovation complexity into clear next steps. Evidence-based validation for investors, SMEs and corporates: auditable data instead of gut-feel." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a5496'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3En%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body class="bg-bg text-body antialiased">
+  <div class="grain"></div>
+
+  <!-- ============================= NAV ============================= -->
+  <header data-nav-root class="fixed inset-x-0 top-0 z-50">
+    <div class="wrap pt-4 md:pt-5">
+      <nav class="nav-pill flex items-center justify-between gap-4 rounded-full pl-5 pr-2 py-2 md:pr-3">
+        <a href="#top" class="font-semibold tracking-tight text-lg shrink-0">
+          <span class="text-ink">neuvo</span><span class="text-blue">sight</span>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-ink/80">
+          <a href="#offer" class="hover:text-blue transition-colors">Our offer</a>
+          <a href="#method" class="hover:text-blue transition-colors">Method</a>
+          <a href="#use-cases" class="hover:text-blue transition-colors">Use cases</a>
+          <a href="#team" class="hover:text-blue transition-colors">Team</a>
+          <a href="#faq" class="hover:text-blue transition-colors">FAQ</a>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-4">
+          <div class="flex items-center gap-1 text-xs font-semibold text-ink/50">
+            <button class="px-1.5 py-1 rounded-full text-blue bg-blue-lightest">EN</button>
+            <button class="px-1.5 py-1 rounded-full hover:text-ink transition-colors">DE</button>
+            <button class="px-1.5 py-1 rounded-full hover:text-ink transition-colors">HU</button>
+          </div>
+          <a href="#contact" class="btn btn-primary group text-sm py-2.5">
+            I want to discuss my options
+            <span class="btn-arrow">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </span>
+          </a>
+        </div>
+
+        <button data-nav-toggle aria-expanded="false" aria-label="Toggle menu" class="lg:hidden relative w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+          <span data-nav-line class="absolute w-4 h-[1.5px] bg-ink -translate-y-[3px]"></span>
+          <span data-nav-line class="absolute w-4 h-[1.5px] bg-ink translate-y-[3px]"></span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- mobile menu -->
+    <div data-nav-menu data-open="false" class="lg:hidden fixed inset-0 top-0 z-40 bg-ink/97 backdrop-blur-2xl text-white opacity-0 pointer-events-none data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto transition-opacity duration-500">
+      <div class="h-full flex flex-col justify-center items-center gap-7 text-2xl font-medium">
+        <a href="#offer" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-100">Our offer</a>
+        <a href="#method" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-150">Method</a>
+        <a href="#use-cases" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-200">Use cases</a>
+        <a href="#team" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[250ms]">Team</a>
+        <a href="#faq" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-300">FAQ</a>
+        <a href="#contact" class="btn btn-on-dark mt-4 opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[350ms]">I want to discuss my options</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="overflow-x-hidden w-full max-w-full">
+
+    <!-- ============================= HERO ============================= -->
+    <section data-hero class="relative pt-44 pb-28 md:pt-56 md:pb-40">
+      <div class="pointer-events-none absolute inset-0 overflow-hidden -z-10">
+        <div
+          class="absolute inset-0"
+          style="background: radial-gradient(140% 120% at 100% 0%, rgba(13,53,98,0.38) 0%, rgba(26,84,150,0.24) 30%, rgba(122,171,212,0.14) 55%, transparent 82%);"
+        ></div>
+      </div>
+
+      <div class="wrap grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div class="lg:col-span-7">
+          <h1 class="reveal max-w-2xl text-[2.75rem] leading-[1.05] md:text-6xl lg:text-[4rem] tracking-tight font-semibold text-ink">
+            neuvosight
+          </h1>
+          <h2 class="reveal mt-4 max-w-lg font-accent italic text-3xl md:text-4xl leading-snug font-medium text-blue-dark" data-delay="0.12">
+            We turn innovation complexity into clear next steps.
+          </h2>
+          <div class="reveal mt-9 flex flex-wrap items-center gap-4" data-delay="0.24">
+            <a href="#contact" class="btn btn-primary group">
+              I want to discuss my options
+              <span class="btn-arrow">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </span>
+            </a>
+            <a href="#method" class="btn btn-ghost">See the method</a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 reveal" data-delay="0.15">
+          <div class="mx-auto max-w-lg">
+            <div data-hero-funnel role="img" aria-label="Funnel showing the share of projects passing each of the four gates: 100%, 45%, 22%, 10%" style="aspect-ratio: 1.4 / 1;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= TRUST MARQUEE ============================= -->
+    <section class="border-y border-ink/[0.06] py-7 reveal">
+      <div class="wrap flex items-center gap-8">
+        <span class="hidden md:block shrink-0 text-xs font-semibold uppercase tracking-[0.16em] text-ink/40">Worked alongside</span>
+        <div class="overflow-hidden flex-1 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+          <div data-quote-track-ignore class="marquee-track flex items-center w-max text-ink/35 font-semibold text-lg tracking-tight">
+            <span class="mr-16">Robert Bosch Venture Capital</span>
+            <span class="mr-16">Unibite</span>
+            <span class="mr-16">Phaneros</span>
+            <span class="mr-16">Bcombinator, Barcelona</span>
+            <span class="mr-16">Robert Bosch Venture Capital</span>
+            <span class="mr-16">Unibite</span>
+            <span class="mr-16">Phaneros</span>
+            <span class="mr-16">Bcombinator, Barcelona</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= OUR OFFER ============================= -->
+    <section id="offer" class="py-24 md:py-32">
+      <div class="wrap">
+        <div class="reveal max-w-xl">
+          <h2 class="text-3xl md:text-[2.75rem] leading-[1.1] tracking-tight font-semibold text-ink">Our offer, shaped to where you sit</h2>
+          <p class="mt-4 text-lg leading-relaxed">One method, three vantage points. What changes is the question you're trying to answer.</p>
+        </div>
+
+        <div class="mt-12 grid lg:grid-cols-12 gap-5">
+          <article class="reveal lg:col-span-7 lg:row-span-2 rounded-[1.75rem] bg-blue-lightest p-9 md:p-11 flex flex-col justify-between min-h-[280px]">
+            <div>
+              <h3 class="text-2xl font-semibold text-ink">for Investors</h3>
+              <p class="mt-3 max-w-md text-base leading-relaxed">Rapid, evidence-based due diligence. We provide the auditable data and clarity you need to commit to deals with total confidence.</p>
+            </div>
+            <span class="mt-8 inline-flex text-sm font-semibold text-blue">Due diligence, decision-ready</span>
+          </article>
+
+          <article class="reveal lg:col-span-5 rounded-[1.75rem] bg-teal-lightest p-8 md:p-9">
+            <h3 class="text-xl font-semibold text-ink">for SMEs</h3>
+            <p class="mt-2.5 text-sm leading-relaxed">Explore new technologies and high-growth verticals without the overhead. We act as your external innovation engine, delivering proof-of-concepts without internal restructuring.</p>
+          </article>
+
+          <article class="reveal lg:col-span-5 rounded-[1.75rem] bg-rose-lightest p-8 md:p-9">
+            <h3 class="text-xl font-semibold text-ink">for Corporates</h3>
+            <p class="mt-2.5 text-sm leading-relaxed">The strategic framework and data-driven discipline for high-stakes portfolio decisions, including clear 'Go / Pivot / Stop' criteria that eliminate ambiguity.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= METHOD ============================= -->
+    <section id="method" class="py-24 md:py-32 bg-white">
+      <div class="wrap">
+        <div class="reveal max-w-xl">
+          <h2 class="text-3xl md:text-[2.75rem] leading-[1.1] tracking-tight font-semibold text-ink">The neuvosight method</h2>
+          <p class="mt-4 text-lg leading-relaxed">Gate-based, evidence-driven system. Each stage delivers a concrete output: not a report, a decision.</p>
+        </div>
+
+        <div data-method-seq class="mt-16 relative">
+          <div class="seq-line hidden md:block absolute left-[27px] top-3 bottom-3 w-px bg-gradient-to-b from-blue-light via-amber to-rose"></div>
+
+          <div class="space-y-10 md:space-y-14">
+            <div class="grid md:grid-cols-12 gap-5 md:gap-8 items-start">
+              <div class="md:col-span-1 flex md:justify-center">
+                <span class="seq-dot w-14 h-14 rounded-full bg-blue-lightest text-blue font-semibold flex items-center justify-center shrink-0 ring-4 ring-white">01</span>
+              </div>
+              <div class="seq-text md:col-span-6">
+                <h3 class="text-xl font-semibold text-ink">Idea Triage</h3>
+                <p class="text-sm font-medium text-blue mt-1">Days, not weeks</p>
+                <p class="mt-3 text-base leading-relaxed">Rapid feasibility scan. Technical red flags, strategic misalignment, and fundamental market signals surfaced before any significant resource commitment.</p>
+              </div>
+              <div class="md:col-span-5 md:pt-1 flex items-center gap-4">
+                <svg class="seq-arrow shrink-0 text-blue" width="44" height="16" viewBox="0 0 44 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h38M34 2l6 6-6 6"/></svg>
+                <div class="seq-out">
+                  <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/40">Output</p>
+                  <p class="mt-0.5 font-medium text-ink">Go / No-Go recommendation</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-5 md:gap-8 items-start">
+              <div class="md:col-span-1 flex md:justify-center">
+                <span class="seq-dot w-14 h-14 rounded-full bg-blue text-white font-semibold flex items-center justify-center shrink-0 ring-4 ring-white">02</span>
+              </div>
+              <div class="seq-text md:col-span-6">
+                <h3 class="text-xl font-semibold text-ink">Problem &amp; Value Validation</h3>
+                <p class="text-sm font-medium text-blue mt-1">Assumptions → evidence</p>
+                <p class="mt-3 text-base leading-relaxed">Evidence-based de-risking of the core value proposition. Customer interviews, willingness-to-pay proxies, competitive positioning, moving from assumptions to auditable signals.</p>
+              </div>
+              <div class="md:col-span-5 md:pt-1 flex items-center gap-4">
+                <svg class="seq-arrow shrink-0 text-blue" width="44" height="16" viewBox="0 0 44 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h38M34 2l6 6-6 6"/></svg>
+                <div class="seq-out">
+                  <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/40">Output</p>
+                  <p class="mt-0.5 font-medium text-ink">Validation Dossier, decision-ready</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-5 md:gap-8 items-start">
+              <div class="md:col-span-1 flex md:justify-center">
+                <span class="seq-dot w-14 h-14 rounded-full bg-amber text-white font-semibold flex items-center justify-center shrink-0 ring-4 ring-white">03</span>
+              </div>
+              <div class="seq-text md:col-span-6">
+                <h3 class="text-xl font-semibold text-ink">MVP &amp; Market Validation</h3>
+                <p class="text-sm font-medium text-amber mt-1">Real-world performance</p>
+                <p class="mt-3 text-base leading-relaxed">Technical stability and early user engagement measured against defined criteria in a controlled environment.</p>
+              </div>
+              <div class="md:col-span-5 md:pt-1 flex items-center gap-4">
+                <svg class="seq-arrow shrink-0 text-amber" width="44" height="16" viewBox="0 0 44 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h38M34 2l6 6-6 6"/></svg>
+                <div class="seq-out">
+                  <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/40">Output</p>
+                  <p class="mt-0.5 font-medium text-ink">Pilot-Ready Certification</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-5 md:gap-8 items-start">
+              <div class="md:col-span-1 flex md:justify-center">
+                <span class="seq-dot w-14 h-14 rounded-full bg-rose text-white font-semibold flex items-center justify-center shrink-0 ring-4 ring-white">04</span>
+              </div>
+              <div class="seq-text md:col-span-6">
+                <h3 class="text-xl font-semibold text-ink">Incubation &amp; Integration</h3>
+                <p class="text-sm font-medium text-rose mt-1">Operational scaling</p>
+                <p class="mt-3 text-base leading-relaxed">Scaling within or alongside the existing business. We manage the handover complexity: the stage where most innovation programs quietly fail.</p>
+              </div>
+              <div class="md:col-span-5 md:pt-1 flex items-center gap-4">
+                <svg class="seq-arrow shrink-0 text-rose" width="44" height="16" viewBox="0 0 44 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h38M34 2l6 6-6 6"/></svg>
+                <div class="seq-out">
+                  <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/40">Output</p>
+                  <p class="mt-0.5 font-medium text-ink">Spin-in / Spin-off Readiness Assessment</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= TRACK RECORD ============================= -->
+    <section class="py-20 md:py-24 bg-ink text-white">
+      <div class="wrap grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
+        <div class="reveal">
+          <p class="text-4xl md:text-5xl font-semibold tracking-tight"><span data-count-to="5" data-suffix="M">0M</span><span class="text-amber">€</span></p>
+          <p class="mt-2 text-sm text-white/55">Secured from internal innovation fund for project execution</p>
+        </div>
+        <div class="reveal" data-delay="0.08">
+          <p class="text-4xl md:text-5xl font-semibold tracking-tight"><span data-count-to="50" data-suffix="+">0+</span></p>
+          <p class="mt-2 text-sm text-white/55">Structured validation projects delivered</p>
+        </div>
+        <div class="reveal" data-delay="0.16">
+          <p class="text-4xl md:text-5xl font-semibold tracking-tight"><span data-count-to="14" data-suffix="">0</span></p>
+          <p class="mt-2 text-sm text-white/55">Pilots successfully launched</p>
+        </div>
+        <div class="reveal" data-delay="0.24">
+          <p class="text-4xl md:text-5xl font-semibold tracking-tight"><span data-count-to="2" data-suffix="">0</span></p>
+          <p class="mt-2 text-sm text-white/55">Products integrated into global corporate portfolios</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= TESTIMONIALS ============================= -->
+    <section class="py-24 md:py-32">
+      <div class="wrap">
+        <div class="reveal max-w-xl">
+          <h2 class="text-3xl md:text-[2.75rem] leading-[1.1] tracking-tight font-semibold text-ink">What our clients say</h2>
+        </div>
+
+        <div data-quote-widget class="reveal mt-12 relative max-w-3xl mx-auto">
+          <div class="overflow-hidden rounded-[1.75rem] bg-white border border-ink/[0.06] shadow-[0_24px_64px_-32px_rgba(13,26,44,0.25)]">
+            <div data-quote-track class="flex transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+              <figure class="w-full shrink-0 px-8 py-12 md:px-14 md:py-16">
+                <span class="font-serif text-6xl text-blue-light leading-none">&ldquo;</span>
+                <blockquote class="mt-2 text-xl md:text-2xl leading-snug text-ink">
+                  Working with our mentor from the very beginning has been one of the most valuable assets to our progress: sharp business advice and leadership coaching with a measurable impact.
+                </blockquote>
+                <figcaption class="mt-6 text-sm font-medium text-body">Daniel Furiák <span class="text-ink/40 font-normal">, Co-founder, Unibite</span></figcaption>
+              </figure>
+              <figure class="w-full shrink-0 px-8 py-12 md:px-14 md:py-16">
+                <span class="font-serif text-6xl text-teal-lightest leading-none" style="color:#7bd6e4">&ldquo;</span>
+                <blockquote class="mt-2 text-xl md:text-2xl leading-snug text-ink">
+                  I could always rely on the technical expertise and very fine calibration for markets, which resulted in very successful innovations.
+                </blockquote>
+                <figcaption class="mt-6 text-sm font-medium text-body">Johannes Grabowski <span class="text-ink/40 font-normal">, Robert Bosch Venture Capital</span></figcaption>
+              </figure>
+              <figure class="w-full shrink-0 px-8 py-12 md:px-14 md:py-16">
+                <span class="font-serif text-6xl text-rose-lightest leading-none" style="color:#e3a8c4">&ldquo;</span>
+                <blockquote class="mt-2 text-xl md:text-2xl leading-snug text-ink">
+                  A partner who brought clarity to complex situations, connected strategy with practical implementation, dependable and solution-oriented in demanding environments.
+                </blockquote>
+                <figcaption class="mt-6 text-sm font-medium text-body">Michael Nichols <span class="text-ink/40 font-normal">, Founder, Phaneros</span></figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center justify-center gap-4">
+            <button data-quote-prev aria-label="Previous testimonial" class="btn-icon !bg-ink/[0.06] hover:!bg-ink/10">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="flex items-center gap-2">
+              <button data-quote-dot data-active="true" aria-label="Testimonial 1" class="w-1.5 h-1.5 rounded-full bg-ink/20 data-[active=true]:bg-blue data-[active=true]:w-5 transition-all"></button>
+              <button data-quote-dot data-active="false" aria-label="Testimonial 2" class="w-1.5 h-1.5 rounded-full bg-ink/20 data-[active=true]:bg-blue data-[active=true]:w-5 transition-all"></button>
+              <button data-quote-dot data-active="false" aria-label="Testimonial 3" class="w-1.5 h-1.5 rounded-full bg-ink/20 data-[active=true]:bg-blue data-[active=true]:w-5 transition-all"></button>
+            </div>
+            <button data-quote-next aria-label="Next testimonial" class="btn-icon !bg-ink/[0.06] hover:!bg-ink/10">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= USE CASES ============================= -->
+    <section id="use-cases" class="py-24 md:py-32 bg-white">
+      <div class="wrap">
+        <div class="reveal max-w-xl">
+          <h2 class="text-3xl md:text-[2.75rem] leading-[1.1] tracking-tight font-semibold text-ink">Proof, not promises</h2>
+          <p class="mt-4 text-lg leading-relaxed">Three ventures we validated, built, and stress-tested from the inside.</p>
+        </div>
+
+        <div class="mt-12 grid md:grid-cols-3 gap-5">
+          <a href="/use-case/ecophaser/" class="reveal group rounded-[1.75rem] bg-teal-lightest overflow-hidden flex flex-col">
+            <div class="relative aspect-[4/3] flex items-center justify-center overflow-hidden">
+              <svg viewBox="0 0 200 150" class="w-4/5 h-4/5 transition-transform duration-700 group-hover:scale-105" aria-hidden="true">
+                <rect x="20" y="20" width="160" height="14" rx="4" fill="#0891a8" opacity="0.85" />
+                <rect x="20" y="42" width="160" height="14" rx="4" fill="#0891a8" opacity="0.55" />
+                <rect x="20" y="64" width="160" height="14" rx="4" fill="#0891a8" opacity="0.3" />
+                <path d="M30 100c20-18 40 14 60-4s40 14 60-4 20 4 20 4" fill="none" stroke="#066678" stroke-width="2.5" stroke-linecap="round" />
+                <circle cx="30" cy="100" r="3.5" fill="#066678" />
+                <circle cx="150" cy="96" r="3.5" fill="#066678" />
+              </svg>
+            </div>
+            <div class="p-7 flex-1 flex flex-col">
+              <span class="text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-dark">CleanTech</span>
+              <h3 class="mt-2 text-xl font-semibold text-ink">ecoPhaser</h3>
+              <p class="mt-2 text-sm leading-relaxed flex-1">Phase-change climate ceilings cut building energy use by up to 60% without sacrificing comfort.</p>
+              <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-dark">Read the case study
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-500 group-hover:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <a href="/use-case/telemetryinsights/" class="reveal group rounded-[1.75rem] bg-blue-lightest overflow-hidden flex flex-col" data-delay="0.08">
+            <div class="relative aspect-[4/3] flex items-center justify-center overflow-hidden">
+              <svg viewBox="0 0 200 150" class="w-4/5 h-4/5 transition-transform duration-700 group-hover:scale-105" aria-hidden="true">
+                <polyline points="10,110 40,70 65,95 95,40 125,80 155,30 190,60" fill="none" stroke="#1a5496" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="40" cy="70" r="3.5" fill="#0d3562" />
+                <circle cx="95" cy="40" r="3.5" fill="#0d3562" />
+                <circle cx="155" cy="30" r="4.5" fill="#d4860a" />
+                <line x1="10" y1="130" x2="190" y2="130" stroke="#1a5496" stroke-opacity="0.2" />
+              </svg>
+            </div>
+            <div class="p-7 flex-1 flex flex-col">
+              <span class="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue">AI / Data Analytics</span>
+              <h3 class="mt-2 text-xl font-semibold text-ink">Telemetry Insights</h3>
+              <p class="mt-2 text-sm leading-relaxed flex-1">An AI-powered analytics platform turning complex telemetry into personalized performance recommendations.</p>
+              <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-blue">Read the case study
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-500 group-hover:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <a href="/use-case/unibite/" class="reveal group rounded-[1.75rem] bg-rose-lightest overflow-hidden flex flex-col" data-delay="0.16">
+            <div class="relative aspect-[4/3] flex items-center justify-center overflow-hidden">
+              <svg viewBox="0 0 200 150" class="w-4/5 h-4/5 transition-transform duration-700 group-hover:scale-105" aria-hidden="true">
+                <path d="M60 40c0-11 9-20 20-20s20 9 20 20v30c0 22-18 40-40 40s-40-18-40-40" fill="none" stroke="#b03a72" stroke-width="3" stroke-linecap="round" />
+                <circle cx="80" cy="40" r="6" fill="#b03a72" />
+                <path d="M120 55l14-14 10 10-14 14z" fill="#b03a72" opacity="0.85" />
+                <polyline points="30,90 50,90 58,75 66,105 74,90 150,90" fill="none" stroke="#8a2c58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div class="p-7 flex-1 flex flex-col">
+              <span class="text-[11px] font-semibold uppercase tracking-[0.14em] text-rose">Sports Tech / MedTech</span>
+              <h3 class="mt-2 text-xl font-semibold text-ink">Unibite</h3>
+              <p class="mt-2 text-sm leading-relaxed flex-1">A smart mouthguard using real-time vitals and impact tracking to protect athletes from head injuries.</p>
+              <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-rose">Read the case study
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-500 group-hover:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= TEAM ============================= -->
+    <section id="team" class="py-24 md:py-32">
+      <div class="wrap grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        <div class="reveal lg:col-span-6">
+          <h2 class="text-3xl md:text-[2.75rem] leading-[1.15] tracking-tight font-semibold text-ink">A small team of senior specialists, not a bench of juniors</h2>
+          <p class="mt-5 text-lg leading-relaxed max-w-md">
+            A common engineering (STEM) background, and years of working closely together. We combine corporate innovation experience with hands-on venture building. So when we validate an opportunity, our judgement is grounded in having built, piloted, and stopped projects ourselves, not just advised on them.
+          </p>
+        </div>
+
+        <div class="reveal lg:col-span-6 grid sm:grid-cols-2 gap-4" data-delay="0.1">
+          <div class="rounded-2xl border border-ink/[0.08] p-6">
+            <h3 class="font-semibold text-ink">Broad engineering base</h3>
+            <p class="mt-2 text-sm leading-relaxed">Mechanical, chemical, telecom, hardware and full-stack software, plus industrial design, computer vision and data analytics.</p>
+          </div>
+          <div class="rounded-2xl border border-ink/[0.08] p-6">
+            <h3 class="font-semibold text-ink">Cross-industry experience</h3>
+            <p class="mt-2 text-sm leading-relaxed">Automotive, electronics, manufacturing, healthcare and telecommunications.</p>
+          </div>
+          <div class="rounded-2xl border border-ink/[0.08] p-6">
+            <h3 class="font-semibold text-ink">Full innovation lifecycle</h3>
+            <p class="mt-2 text-sm leading-relaxed">From early concept and development through to market-ready products.</p>
+          </div>
+          <div class="rounded-2xl border border-ink/[0.08] p-6">
+            <h3 class="font-semibold text-ink">Technical and commercial fluency</h3>
+            <p class="mt-2 text-sm leading-relaxed">We move easily between engineering teams and decision-makers, turning complex data into clear business cases.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= FAQ ============================= -->
+    <section id="faq" class="py-24 md:py-32 bg-white">
+      <div class="wrap grid lg:grid-cols-12 gap-10 lg:gap-16">
+        <div class="reveal lg:col-span-4">
+          <h2 class="text-3xl md:text-[2.75rem] leading-[1.1] tracking-tight font-semibold text-ink">Frequently asked</h2>
+          <p class="mt-4 text-base leading-relaxed">Straight answers on methodology, fit, and how a collaboration actually runs.</p>
+        </div>
+
+        <div data-accordion class="reveal lg:col-span-8 divide-y divide-ink/[0.08] border-t border-b border-ink/[0.08]">
+          <div data-accordion-item data-open="true" class="accordion-item py-5">
+            <button data-accordion-trigger class="w-full flex items-center justify-between gap-4 text-left">
+              <span class="font-medium text-ink">What is your methodology?</span>
+              <span class="accordion-chevron shrink-0 w-7 h-7 rounded-full bg-ink/5 flex items-center justify-center">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="accordion-panel"><div class="pt-3 pr-10 text-sm leading-relaxed">Our approach is built on Evidence-Based Validation. We combine engineering rigor (STEM background) with Lean Startup and Design Thinking, evaluating every innovation through Desirability, Feasibility, and Viability. Unlike traditional consultancies, we provide an auditable framework that delivers objective go/no-go recommendations based on real market data and technical stress-tests.</div></div>
+          </div>
+
+          <div data-accordion-item data-open="false" class="accordion-item py-5">
+            <button data-accordion-trigger class="w-full flex items-center justify-between gap-4 text-left">
+              <span class="font-medium text-ink">Why is innovation critical for organisations today?</span>
+              <span class="accordion-chevron shrink-0 w-7 h-7 rounded-full bg-ink/5 flex items-center justify-center">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="accordion-panel"><div class="pt-3 pr-10 text-sm leading-relaxed">In the current "pre-seed crisis," 90–95% of ideas fail due to a lack of rigorous validation. Innovation is no longer discretionary. It's a strategic survival mechanism. With tightening capital and shifting EU/global cycles (DefTech, AI), companies and investors need a filter to kill non-viable ideas early, protecting capital and reputation while accelerating high-potential winners.</div></div>
+          </div>
+
+          <div data-accordion-item data-open="false" class="accordion-item py-5">
+            <button data-accordion-trigger class="w-full flex items-center justify-between gap-4 text-left">
+              <span class="font-medium text-ink">How does a typical collaboration work?</span>
+              <span class="accordion-chevron shrink-0 w-7 h-7 rounded-full bg-ink/5 flex items-center justify-center">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="accordion-panel"><div class="pt-3 pr-10 text-sm leading-relaxed">We're open to both project-based collaborations and retainer models. Every engagement solves a specific problem with a clear, high-impact output: <strong class="text-ink">tailored expertise</strong> rather than a one-size-fits-all framework, <strong class="text-ink">no initial commitment</strong>: everything starts with a 30-minute discovery conversation, no deck, no cost, and <strong class="text-ink">full confidentiality</strong> from the very first minute. We meet you exactly where you are and scale our involvement accordingly.</div></div>
+          </div>
+
+          <div data-accordion-item data-open="false" class="accordion-item py-5">
+            <button data-accordion-trigger class="w-full flex items-center justify-between gap-4 text-left">
+              <span class="font-medium text-ink">When should my company involve Neuvosight?</span>
+              <span class="accordion-chevron shrink-0 w-7 h-7 rounded-full bg-ink/5 flex items-center justify-center">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="accordion-panel"><div class="pt-3 pr-10 text-sm leading-relaxed">The right moment is before a larger commitment lands on the table, while the evidence is still incomplete and the decision is still genuinely open. We work most often with industrial SMEs and mid-sized manufacturers, corporate innovation units missing a reliable go/kill mechanism, university Technology Transfer Offices, and startups preparing for a funding round or corporate pilot. We're probably not the right fit for a long-term strategy retainer or a partner who avoids difficult recommendations to keep things comfortable.</div></div>
+          </div>
+
+          <div data-accordion-item data-open="false" class="accordion-item py-5">
+            <button data-accordion-trigger class="w-full flex items-center justify-between gap-4 text-left">
+              <span class="font-medium text-ink">Who decides whether a project continues, pivots, or stops?</span>
+              <span class="accordion-chevron shrink-0 w-7 h-7 rounded-full bg-ink/5 flex items-center justify-center">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="accordion-panel"><div class="pt-3 pr-10 text-sm leading-relaxed">The decision is always yours. The evidence is always ours. Before each phase begins, we agree on explicit criteria for what "good enough to continue" looks like, and what should trigger a pivot or stop. Working inside a large industrial organisation, every project we recommended stopping was stopped, and every project we recommended continuing reached pilot stage. A kill recommendation isn't failure. It's often the most capital-efficient result a validation process can produce.</div></div>
+          </div>
+
+          <div data-accordion-item data-open="false" class="accordion-item py-5">
+            <button data-accordion-trigger class="w-full flex items-center justify-between gap-4 text-left">
+              <span class="font-medium text-ink">What services does Neuvosight offer?</span>
+              <span class="accordion-chevron shrink-0 w-7 h-7 rounded-full bg-ink/5 flex items-center justify-center">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="accordion-panel"><div class="pt-3 pr-10 text-sm leading-relaxed">Three areas: <strong class="text-ink">venture clienting &amp; startup scouting</strong>: finding the startup that already solved your challenge and structuring the pilot, including a shared Venture Clienting Squad for SMEs; <strong class="text-ink">innovation validation</strong>: a structured program to find out whether an opportunity is real before resources get committed; and <strong class="text-ink">corporate innovation advisory</strong>: structuring decision gates, kill criteria, and organisational fit.</div></div>
+          </div>
+
+          <div data-accordion-item data-open="false" class="accordion-item py-5">
+            <button data-accordion-trigger class="w-full flex items-center justify-between gap-4 text-left">
+              <span class="font-medium text-ink">How is Neuvosight different from other consultancies?</span>
+              <span class="accordion-chevron shrink-0 w-7 h-7 rounded-full bg-ink/5 flex items-center justify-center">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="accordion-panel"><div class="pt-3 pr-10 text-sm leading-relaxed">Three things: we deliver decisions, not frameworks: a go/no-go recommendation, a validated pilot design, a kill memo at every stage; we've actually operated from the inside, having built and run the internal startup accelerator of a large industrial company; and we understand why innovation projects actually die: organizational misfit kills more projects than bad ideas do, and spotting that mismatch early is half the work.</div></div>
+          </div>
+
+          <div data-accordion-item data-open="false" class="accordion-item py-5">
+            <button data-accordion-trigger class="w-full flex items-center justify-between gap-4 text-left">
+              <span class="font-medium text-ink">Which industries and geographies do you serve?</span>
+              <span class="accordion-chevron shrink-0 w-7 h-7 rounded-full bg-ink/5 flex items-center justify-center">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="accordion-panel"><div class="pt-3 pr-10 text-sm leading-relaxed">Deepest experience at the intersection of industrial manufacturing, electronics, and automotive supply chain, and B2B deep-tech more broadly. Geographically focused on Europe, DACH most active, alongside Spain, Italy, Poland, and the Czech Republic. We work in English and German, mostly combining remote work with on-site sessions. Sweet spot: €20M–€500M revenue range.</div></div>
+          </div>
+
+          <div data-accordion-item data-open="false" class="accordion-item py-5">
+            <button data-accordion-trigger class="w-full flex items-center justify-between gap-4 text-left">
+              <span class="font-medium text-ink">How do you handle sensitive data?</span>
+              <span class="accordion-chevron shrink-0 w-7 h-7 rounded-full bg-ink/5 flex items-center justify-center">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="accordion-panel"><div class="pt-3 pr-10 text-sm leading-relaxed">Before any information changes hands, we sign NDAs and confidentiality agreements. We never reuse or repurpose client-specific material across projects, and outputs are exclusively owned by the client unless otherwise agreed. Where AI tools are used, no client data goes into model training and no information leaks into shared datasets. Practices align with EU data protection requirements and the ISO 56000 series on innovation management.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= CONTACT ============================= -->
+    <section id="contact" class="relative py-24 md:py-32 overflow-hidden bg-gradient-to-b from-blue-dark to-ink text-white">
+      <div class="pointer-events-none absolute -top-20 right-0 w-[480px] h-[480px] rounded-full bg-blue/25 blur-[130px]"></div>
+      <div class="wrap relative grid lg:grid-cols-12 gap-10 items-center">
+        <div class="reveal lg:col-span-7">
+          <h2 class="text-3xl md:text-[2.75rem] leading-[1.1] tracking-tight font-semibold">Let's find out if we're the right fit</h2>
+          <p class="mt-5 max-w-lg text-lg leading-relaxed text-white/70">
+            The fastest way to find out is a conversation, not a proposal, not a deck. Just 30 minutes, a few honest questions, and a straight answer on whether we can actually help.
+          </p>
+          <div class="mt-9">
+            <a href="https://calendly.com/ferenc-balazs-neuvosight" target="_blank" rel="noopener" class="btn btn-primary group">
+              I want to discuss my options
+              <span class="btn-arrow">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal lg:col-span-5 grid gap-3" data-delay="0.12">
+          <a href="mailto:info@neuvosight.com" class="flex items-center gap-4 rounded-2xl bg-white/[0.06] border border-white/10 px-5 py-4 hover:bg-white/[0.09] transition-colors">
+            <span class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
+            </span>
+            <span>
+              <span class="block text-[11px] uppercase tracking-[0.14em] text-white/45">Email</span>
+              <span class="block font-medium">info@neuvosight.com</span>
+            </span>
+          </a>
+          <a href="tel:+4915229520201" class="flex items-center gap-4 rounded-2xl bg-white/[0.06] border border-white/10 px-5 py-4 hover:bg-white/[0.09] transition-colors">
+            <span class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <span>
+              <span class="block text-[11px] uppercase tracking-[0.14em] text-white/45">Phone</span>
+              <span class="block font-medium">+49 152 2952 0201</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================= FOOTER ============================= -->
+  <footer class="bg-bg pt-16 pb-8">
+    <div class="wrap">
+      <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-ink/[0.08]">
+        <div class="md:col-span-5">
+          <a href="#top" class="font-semibold tracking-tight text-lg">
+            <span class="text-ink">neuvo</span><span class="text-blue">sight</span>
+          </a>
+        </div>
+        <div class="md:col-span-3">
+          <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/40">Navigate</p>
+          <div class="mt-4 flex flex-col gap-2.5 text-sm">
+            <a href="#offer" class="hover:text-ink transition-colors">Our offer</a>
+            <a href="#method" class="hover:text-ink transition-colors">Method</a>
+            <a href="#use-cases" class="hover:text-ink transition-colors">Use cases</a>
+            <a href="#team" class="hover:text-ink transition-colors">Team</a>
+          </div>
+        </div>
+        <div class="md:col-span-4">
+          <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/40">Get in touch</p>
+          <div class="mt-4 flex flex-col gap-2.5 text-sm">
+            <a href="mailto:info@neuvosight.com" class="hover:text-ink transition-colors">info@neuvosight.com</a>
+            <a href="tel:+4915229520201" class="hover:text-ink transition-colors">+49 152 2952 0201</a>
+            <div class="flex items-center gap-2 pt-1">
+              <button class="text-blue font-semibold">EN</button>
+              <span class="text-ink/20">/</span>
+              <button class="hover:text-ink transition-colors">DE</button>
+              <span class="text-ink/20">/</span>
+              <button class="hover:text-ink transition-colors">HU</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink/45">
+        <p>© <span data-year></span> Neuvosight. All rights reserved.</p>
+        <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+          <a href="#" class="hover:text-ink transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-ink transition-colors">Terms &amp; Conditions</a>
+          <a href="#" class="hover:text-ink transition-colors">Cookie Policy</a>
+          <a href="#" class="hover:text-ink transition-colors">Legal Notice</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

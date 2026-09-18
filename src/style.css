@@ -1,0 +1,269 @@
+@import "tailwindcss";
+@import "@fontsource-variable/manrope";
+@import "@fontsource-variable/cormorant-garamond";
+
+@theme {
+  --font-sans: "Manrope Variable", "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-accent: "Cormorant Garamond Variable", "Cormorant Garamond", serif;
+
+  --color-bg: #f7f9fc;
+  --color-ink: #1a2330;
+  --color-body: #4a5a6a;
+
+  --color-blue: #1a5496;
+  --color-blue-dark: #0d3562;
+  --color-blue-light: #7aabd4;
+  --color-blue-lightest: #ebf1f9;
+
+  --color-teal: #0891a8;
+  --color-teal-dark: #066678;
+  --color-teal-lightest: #e0f5f8;
+
+  --color-rose: #b03a72;
+  --color-rose-lightest: #f8e8f1;
+
+  --color-amber: #d4860a;
+  --color-amber-hover: #e6a23c;
+
+  --container-page: 1280px;
+
+  /* shadcn semantic tokens, consumed by imported chart components */
+  --color-background: #ffffff;
+  --color-foreground: #1a2330;
+  --color-muted: #eef2f7;
+  --color-muted-foreground: #64748b;
+  --color-border: #1a233014;
+
+  --chart-1: #1a5496;
+  --chart-2: #0d3562;
+  --chart-3: #0891a8;
+  --chart-4: #d4860a;
+  --chart-5: #7aabd4;
+  --chart-grid: #1a23300f;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-body);
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-blue);
+    color: white;
+  }
+}
+
+@layer components {
+  .wrap {
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-blue);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 1.25rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.5;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9px;
+    padding: 0.8125rem 1.75rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), background-color 0.4s ease, box-shadow 0.4s ease;
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .btn-primary {
+    background: var(--color-amber);
+    color: #1a1200;
+    box-shadow: 0 1px 2px rgba(26, 18, 0, 0.08);
+  }
+  .btn-primary:hover {
+    background: var(--color-amber-hover);
+  }
+
+  .btn-ghost {
+    background: color-mix(in srgb, var(--color-ink) 5%, transparent);
+    color: var(--color-ink);
+    border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  }
+  .btn-ghost:hover {
+    background: color-mix(in srgb, var(--color-ink) 9%, transparent);
+  }
+
+  .btn-on-dark {
+    background: white;
+    color: var(--color-ink);
+  }
+  .btn-on-dark:hover {
+    background: var(--color-blue-lightest);
+  }
+
+  /* Standalone circular icon buttons (e.g. testimonial carousel prev/next). */
+  .btn-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  /* Trailing arrow inside a CTA button: no circle, sits flush with the label
+     so the button's height/padding matches a plain text button exactly. */
+  .btn-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .group:hover .btn-arrow {
+    transform: translate(2px, -2px);
+  }
+
+  .shell {
+    border-radius: 1.75rem;
+    padding: 0.375rem;
+    background: color-mix(in srgb, var(--color-ink) 4%, white);
+    border: 1px solid color-mix(in srgb, var(--color-ink) 7%, transparent);
+  }
+  .shell-core {
+    border-radius: calc(1.75rem - 0.375rem);
+    background: white;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  /* Reveal-on-scroll is opt-in: only takes effect once main.ts confirms it is
+     running (html.js, set synchronously before first paint in <head>). This
+     way content is never hidden if JS fails, and there is no flash-of-visible
+     -then-fade-out from styles applying a frame after first paint. */
+  html.js .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  html.js .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: none;
+  }
+
+  /* Method section choreography (dots -> arrows -> outputs), driven by a GSAP
+     timeline in main.ts. Hidden states only apply while JS is running and the
+     timeline has not been disabled (reduced motion / failure adds html.seq-off). */
+  html.js:not(.seq-off) .seq-dot {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  html.js:not(.seq-off) .seq-text {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  html.js:not(.seq-off) .seq-arrow {
+    clip-path: inset(0 100% 0 0);
+  }
+  html.js:not(.seq-off) .seq-out {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  html.js:not(.seq-off) .seq-line {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  .nav-pill {
+    background: color-mix(in srgb, white 82%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
+    box-shadow: 0 1px 2px rgba(13, 26, 44, 0.04), 0 12px 32px -16px rgba(13, 26, 44, 0.18);
+  }
+
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .accordion-item[data-open="true"] .accordion-chevron {
+    transform: rotate(45deg);
+  }
+  .accordion-chevron {
+    transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .accordion-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .accordion-item[data-open="true"] .accordion-panel {
+    grid-template-rows: 1fr;
+  }
+  .accordion-panel > div {
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    animation: marquee 32s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      transition: none;
+    }
+    .marquee-track {
+      animation: none;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}

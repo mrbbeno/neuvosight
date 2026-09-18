@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>document.documentElement.classList.add('js');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unibite: Case Study · neuvosight</title>
+  <meta name="description" content="How a smart mouthguard uses real-time vitals and impact tracking to protect athletes from head injuries." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a5496'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3En%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body class="bg-bg text-body antialiased">
+  <div class="grain"></div>
+
+  <header data-nav-root class="fixed inset-x-0 top-0 z-50">
+    <div class="wrap pt-4 md:pt-5">
+      <nav class="nav-pill flex items-center justify-between gap-4 rounded-full pl-5 pr-2 py-2 md:pr-3">
+        <a href="/" class="font-semibold tracking-tight text-lg shrink-0">
+          <span class="text-ink">neuvo</span><span class="text-blue">sight</span>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-ink/80">
+          <a href="/#offer" class="hover:text-blue transition-colors">Our offer</a>
+          <a href="/#method" class="hover:text-blue transition-colors">Method</a>
+          <a href="/#use-cases" class="hover:text-blue transition-colors">Use cases</a>
+          <a href="/#team" class="hover:text-blue transition-colors">Team</a>
+          <a href="/#faq" class="hover:text-blue transition-colors">FAQ</a>
+        </div>
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="/#contact" class="btn btn-primary group text-sm py-2.5">
+            I want to discuss my options
+            <span class="btn-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </a>
+        </div>
+        <button data-nav-toggle aria-expanded="false" aria-label="Toggle menu" class="lg:hidden relative w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+          <span data-nav-line class="absolute w-4 h-[1.5px] bg-ink -translate-y-[3px]"></span>
+          <span data-nav-line class="absolute w-4 h-[1.5px] bg-ink translate-y-[3px]"></span>
+        </button>
+      </nav>
+    </div>
+    <div data-nav-menu data-open="false" class="lg:hidden fixed inset-0 top-0 z-40 bg-ink/97 backdrop-blur-2xl text-white opacity-0 pointer-events-none data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto transition-opacity duration-500">
+      <div class="h-full flex flex-col justify-center items-center gap-7 text-2xl font-medium">
+        <a href="/#offer">Our offer</a>
+        <a href="/#method">Method</a>
+        <a href="/#use-cases">Use cases</a>
+        <a href="/#team">Team</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/#contact" class="btn btn-on-dark mt-4">I want to discuss my options</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="overflow-x-hidden w-full max-w-full">
+    <!-- HERO -->
+    <section class="relative pt-36 pb-16 md:pt-44 md:pb-20">
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-[560px] overflow-hidden -z-10">
+        <div class="absolute -top-32 left-1/3 w-[480px] h-[480px] rounded-full bg-rose/10 blur-[110px]"></div>
+      </div>
+      <div class="wrap">
+        <a href="/#use-cases" class="reveal inline-flex items-center gap-2 text-sm font-medium text-ink/50 hover:text-ink transition-colors">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          All use cases
+        </a>
+        <div class="mt-6 grid lg:grid-cols-12 gap-10 items-end">
+          <div class="reveal lg:col-span-8">
+            <span class="eyebrow" style="color:#b03a72">Sports Technology / MedTech</span>
+            <h1 class="mt-4 text-4xl md:text-6xl leading-[1.05] tracking-tight font-semibold text-ink">Unibite</h1>
+            <p class="mt-3 text-lg text-ink/60 max-w-xl">A smart mouthguard for contact sports.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- META GRID -->
+    <section class="pb-20">
+      <div class="wrap">
+        <div class="reveal rounded-[1.75rem] bg-rose-lightest p-6 md:p-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-rose/70">Industry</p>
+            <p class="mt-1.5 font-medium text-ink">Sports Technology / MedTech</p>
+          </div>
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-rose/70">Company size</p>
+            <p class="mt-1.5 font-medium text-ink">3-person founding team</p>
+          </div>
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-rose/70">Market</p>
+            <p class="mt-1.5 font-medium text-ink">Hungary, Austria, Denmark</p>
+          </div>
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-rose/70">Engagement type</p>
+            <p class="mt-1.5 font-medium text-ink">Venture building mentorship</p>
+          </div>
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-rose/70">Duration</p>
+            <p class="mt-1.5 font-medium text-ink">9 months</p>
+          </div>
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-rose/70">Key milestone</p>
+            <p class="mt-1.5 font-medium text-ink">Working prototype in live training environments</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="py-20 bg-white">
+      <div class="wrap grid lg:grid-cols-12 gap-10">
+        <div class="reveal lg:col-span-4">
+          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-ink">The Challenge</h2>
+        </div>
+        <div class="reveal lg:col-span-8 max-w-2xl">
+          <p class="text-lg leading-relaxed">
+            Unibite was born from a collaboration between three university students, an engineer, a physician, and a national-level wrestler, tackling a genuine insider problem in contact sports: undetected head impacts and concussions. The smart mouthguard measures pulse, blood oxygen levels, and 6-axis impact force in real time, giving coaches and athletes actionable data during training.
+          </p>
+          <p class="mt-4 text-lg leading-relaxed">
+            As first-time founders, they lacked hands-on intuition to commercialize their vision in a highly regulated space without existing market relationships. The critical decision: choosing between professional athletes, amateur clubs, consumers, or federations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section class="py-20">
+      <div class="wrap">
+        <div class="reveal max-w-xl">
+          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-ink">The Approach</h2>
+        </div>
+        <div class="mt-10 grid sm:grid-cols-3 gap-5">
+          <div class="reveal rounded-2xl border border-ink/[0.08] p-7">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-rose">Months 1–3</p>
+            <h3 class="mt-2 font-semibold text-ink">Foundation Phase</h3>
+            <p class="mt-2.5 text-sm leading-relaxed">Market research, customer identification, and competitive analysis.</p>
+          </div>
+          <div class="reveal rounded-2xl border border-ink/[0.08] p-7" data-delay="0.08">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-rose">Months 4–9</p>
+            <h3 class="mt-2 font-semibold text-ink">Execution Phase</h3>
+            <p class="mt-2.5 text-sm leading-relaxed">Prototype development and securing the first customers.</p>
+          </div>
+          <div class="reveal rounded-2xl border border-ink/[0.08] p-7" data-delay="0.16">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-rose">Throughout</p>
+            <h3 class="mt-2 font-semibold text-ink">Key Principle</h3>
+            <p class="mt-2.5 text-sm leading-relaxed">"Building cheap and learning fast," with momentum accountability checks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section class="py-20 bg-ink text-white">
+      <div class="wrap">
+        <div class="reveal max-w-2xl">
+          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">The Result</h2>
+          <p class="mt-5 text-lg leading-relaxed text-white/70">
+            A pivot to a B2B institutional model targeting clubs and federations, capitalizing on Olympic preparation cycles, with a working prototype already in live testing. The founders evolved into commercial leaders capable of disciplined decisions under uncertainty.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIMILAR -->
+    <section class="py-20 bg-white">
+      <div class="wrap">
+        <h2 class="reveal text-xl font-semibold tracking-tight text-ink">Similar use cases</h2>
+        <div class="mt-8 grid md:grid-cols-2 gap-5">
+          <a href="/use-case/ecophaser/" class="reveal group rounded-2xl bg-teal-lightest p-7 flex items-center justify-between gap-6">
+            <div>
+              <span class="text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-dark">CleanTech</span>
+              <h3 class="mt-1.5 text-lg font-semibold text-ink">ecoPhaser</h3>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-teal-dark shrink-0 transition-transform duration-500 group-hover:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="/use-case/telemetryinsights/" class="reveal group rounded-2xl bg-blue-lightest p-7 flex items-center justify-between gap-6" data-delay="0.08">
+            <div>
+              <span class="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue">AI / Data Analytics</span>
+              <h3 class="mt-1.5 text-lg font-semibold text-ink">Telemetry Insights</h3>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue shrink-0 transition-transform duration-500 group-hover:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="relative py-24 overflow-hidden bg-gradient-to-b from-blue-dark to-ink text-white">
+      <div class="pointer-events-none absolute -top-20 right-0 w-[480px] h-[480px] rounded-full bg-blue/25 blur-[130px]"></div>
+      <div class="wrap relative text-center">
+        <h2 class="reveal text-3xl md:text-4xl font-semibold tracking-tight max-w-xl mx-auto">Want a similar validation for your idea?</h2>
+        <div class="reveal mt-8 flex justify-center">
+          <a href="https://calendly.com/ferenc-balazs-neuvosight" target="_blank" rel="noopener" class="btn btn-primary group">
+            I want to discuss my options
+            <span class="btn-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-bg pt-12 pb-8">
+    <div class="wrap flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink/45 border-t border-ink/[0.08] pt-8">
+      <p>© <span data-year></span> Neuvosight. All rights reserved.</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+        <a href="/#" class="hover:text-ink transition-colors">Privacy Policy</a>
+        <a href="/#" class="hover:text-ink transition-colors">Terms &amp; Conditions</a>
+        <a href="/#" class="hover:text-ink transition-colors">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
