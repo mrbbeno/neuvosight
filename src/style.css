@@ -157,29 +157,6 @@
   .hero-blob-b { animation: hero-flow-b 18s ease-in-out infinite alternate; }
   .hero-blob-c { animation: hero-flow-c 16s ease-in-out infinite alternate; }
 
-  /* Glass panel behind the hero chart: grows from the center, then the chart mounts. */
-  html.js:not(.seq-off) [data-hero-panel] {
-    transform: scale(0);
-  }
-
-  /* Chart labels sit on the blue hero, so use light text there. */
-  [data-hero-funnel] {
-    --color-muted-foreground: rgb(255 255 255 / 0.88);
-  }
-
-  /* Our offer section intro (GSAP timeline in main.ts adds .off-done when finished). */
-  html.js:not(.seq-off) [data-offer]:not(.off-done) .off-head {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  html.js:not(.seq-off) [data-offer]:not(.off-done) .off-card {
-    clip-path: inset(100% 0px 0px 0px round 1.75rem);
-  }
-  html.js:not(.seq-off) [data-offer]:not(.off-done) .off-in {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-
   /* Header menu links: on hover each word rolls up once, one after another. */
   .roll-word {
     display: inline-block;
@@ -252,6 +229,10 @@
     opacity: 1;
     transform: translateY(0);
     filter: none;
+  }
+  /* Faster variant for the first-screen strip so it follows the hero right away. */
+  html.js .reveal.reveal-quick {
+    transition-duration: 0.5s;
   }
 
   /* Method section choreography (dots -> arrows -> outputs), driven by a GSAP
@@ -369,11 +350,186 @@
     overflow: hidden;
   }
 
+  /* Testimonials: company tabs with a progress line, quote panels crossfade. */
+  html.js .tq-stage {
+    display: grid;
+  }
+  html.js .tq-panel {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(18px);
+    filter: blur(6px);
+    transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease, visibility 0s linear 0.6s;
+  }
+  html.js .tq-panel[data-active="true"] {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    filter: none;
+    transition: opacity 0.7s ease 0.2s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, filter 0.7s ease 0.2s, visibility 0s;
+  }
+  .tq-tab {
+    flex-shrink: 0;
+    text-align: left;
+    color: rgb(255 255 255 / 0.38);
+    transition: color 0.3s ease;
+  }
+  .tq-tab:hover {
+    color: rgb(255 255 255 / 0.75);
+  }
+  .tq-tab[data-active="true"] {
+    color: #fff;
+  }
+  .tq-name {
+    display: block;
+    font-size: clamp(1.25rem, 2.2vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+  .tq-bar {
+    display: block;
+    position: relative;
+    height: 2px;
+    margin-top: 0.75rem;
+    background: rgb(255 255 255 / 0.16);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .tq-tab[data-active="true"] .tq-bar {
+    opacity: 1;
+  }
+  .tq-bar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  [data-live="true"] .tq-tab[data-active="true"] .tq-bar::after {
+    animation: tq-fill 9s linear forwards;
+  }
+  [data-live="true"]:hover .tq-tab[data-active="true"] .tq-bar::after {
+    animation-play-state: paused;
+  }
+  @keyframes tq-fill {
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  /* Use cases: tinted rows flood with their brand color on hover. */
+  .uc-row::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--uc);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .uc-tile svg {
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .uc-arrow {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @media (hover: hover) {
+    .uc-row:hover::before {
+      transform: scaleY(1);
+    }
+    .uc-row:hover .uc-tile svg {
+      transform: scale(1.08) rotate(-3deg);
+    }
+    .uc-row:hover .uc-arrow {
+      transform: rotate(45deg);
+    }
+  }
+
+  /* Team cards lift on hover. */
+  .team-card {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+  }
+  @media (hover: hover) {
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 48px -28px rgb(26 35 48 / 0.35);
+    }
+  }
+
+  /* FAQ (dark): open item lights up. */
+  .faq-item {
+    border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  }
+  .faq-q {
+    color: rgb(255 255 255 / 0.78);
+    transition: color 0.3s ease;
+  }
+  .faq-item:hover .faq-q,
+  .faq-item[data-open="true"] .faq-q {
+    color: #fff;
+  }
+  .faq-item[data-open="true"] .faq-plus {
+    background: var(--color-rose);
+    border-color: var(--color-rose);
+  }
+
+  /* Footer wordmark: oversized, fading out toward the bottom edge. */
+  .footer-mark {
+    font-size: 17vw;
+    line-height: 0.78;
+    padding-top: 0.06em;
+    background: linear-gradient(to bottom, rgb(255 255 255 / 0.28), rgb(255 255 255 / 0));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* KPI section: odometer digits and hover focus. */
+  .odo {
+    display: inline-flex;
+    align-items: flex-start;
+  }
+  .odo-col {
+    display: inline-block;
+    height: 1em;
+    line-height: 1;
+    overflow-x: visible;
+    overflow-y: clip;
+  }
+  .odo-reel {
+    display: block;
+    will-change: transform;
+  }
+  .odo-digit {
+    display: flex;
+    justify-content: center;
+    height: 1em;
+    line-height: 1;
+  }
+  .odo-char {
+    display: inline-block;
+    height: 1em;
+    line-height: 1;
+  }
+  /* KPI intro: hidden states apply until the GSAP timeline adds .kpi-done. */
+  html.js:not(.seq-off) [data-kpi]:not(.kpi-done) .k-tile {
+    clip-path: inset(100% 0px 0px 0px round 1.75rem);
+  }
+  html.js:not(.seq-off) [data-kpi]:not(.kpi-done) .k-in {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  html.js:not(.seq-off) [data-kpi]:not(.kpi-done) .kdot {
+    opacity: 0.18;
+    transform: scale(0.5);
+  }
+
   .marquee-track {
     animation: marquee 32s linear infinite;
-  }
-  .marquee-track:hover {
-    animation-play-state: paused;
   }
   @keyframes marquee {
     from {
@@ -395,6 +551,14 @@
     }
     .marquee-track {
       animation: none;
+    }
+    .tq-bar::after {
+      animation: none !important;
+      transform: scaleX(1);
+    }
+    html.js .tq-panel,
+    html.js .tq-panel[data-active="true"] {
+      transition: none;
     }
     .hero-blob {
       animation: none;

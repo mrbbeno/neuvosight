@@ -1,80 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { mountHeroFunnel } from "./components/hero-funnel";
 
 gsap.registerPlugin(ScrollTrigger);
-
-// Decorative only: must never block the rest of the page's interactivity.
-// Order in the hero: buttons fade in, then the glass panel grows from its
-// center, and only once it has finished does the chart mount and animate.
-let heroFunnelMounted = false;
-function mountHeroFunnelSafely() {
-  if (heroFunnelMounted) return;
-  heroFunnelMounted = true;
-  try {
-    mountHeroFunnel();
-  } catch (err) {
-    console.error("Hero funnel chart failed to mount:", err);
-  }
-}
-
-const heroPanel = document.querySelector<HTMLElement>("[data-hero-panel]");
-if (!heroPanel || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  if (heroPanel) document.documentElement.classList.add("seq-off");
-  mountHeroFunnelSafely();
-} else {
-  // Grows from nothing (scale 0) at its center, quickly.
-  gsap.set(heroPanel, { scale: 0 });
-  gsap.to(heroPanel, {
-    scale: 1,
-    duration: 0.4,
-    delay: 0.8,
-    ease: "power3.out",
-    onComplete: mountHeroFunnelSafely,
-  });
-  // Safety net in case the tween never completes.
-  window.setTimeout(mountHeroFunnelSafely, 3000);
-}
-
-// ---- Hero chart scroll-collapse -------------------------------------------
-// As the hero scrolls past, only the chart's bars compress toward a
-// horizontal centerline and fade — the percentage/stage-name labels are
-// separate elements and are left alone so the text never gets squished.
-const heroSection = document.querySelector<HTMLElement>("[data-hero]");
-if (heroSection && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  // The bars only exist once the chart's own ResizeObserver has measured its
-  // container and React has committed the real markup, so wait for it.
-  const setupBarsCollapse = (bars: HTMLElement) => {
-    gsap.set(bars, { transformOrigin: "center center" });
-    gsap.to(bars, {
-      scaleY: 0.1,
-      opacity: 0.15,
-      ease: "none",
-      scrollTrigger: {
-        trigger: heroSection,
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-  };
-
-  const existingBars = document.querySelector<HTMLElement>("[data-funnel-bars]");
-  if (existingBars) {
-    setupBarsCollapse(existingBars);
-  } else {
-    const mo = new MutationObserver(() => {
-      const bars = document.querySelector<HTMLElement>("[data-funnel-bars]");
-      if (bars) {
-        mo.disconnect();
-        setupBarsCollapse(bars);
-      }
-    });
-    mo.observe(document.body, { childList: true, subtree: true });
-    // Stop watching after a reasonable window in case the chart never mounts.
-    window.setTimeout(() => mo.disconnect(), 5000);
-  }
-}
 
 // ---- Method section sequence ------------------------------------------------
 // 1) dots 01-04 (with their text) appear one after another, 2) each row's
@@ -119,43 +46,6 @@ if (methodSeq) {
       });
     } catch (err) {
       console.error("Method sequence failed, showing content statically:", err);
-      document.documentElement.classList.add("seq-off");
-    }
-  }
-}
-
-// ---- Our offer intro --------------------------------------------------------
-// Heading rises in, the three cards are revealed bottom-to-top one after
-// another, then their content fades up.
-const offerSection = document.querySelector<HTMLElement>("[data-offer]");
-if (offerSection) {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    document.documentElement.classList.add("seq-off");
-  } else {
-    try {
-      const heads = Array.from(offerSection.querySelectorAll<HTMLElement>(".off-head"));
-      const cards = Array.from(offerSection.querySelectorAll<HTMLElement>(".off-card"));
-      const ins = Array.from(offerSection.querySelectorAll<HTMLElement>(".off-in"));
-      const hiddenClip = "inset(100% 0px 0px 0px round 1.75rem)";
-      const shownClip = "inset(0% 0px 0px 0px round 1.75rem)";
-
-      gsap.set(heads, { opacity: 0, y: 24 });
-      gsap.set(cards, { clipPath: hiddenClip });
-      gsap.set(ins, { opacity: 0, y: 14 });
-
-      gsap
-        .timeline({
-          scrollTrigger: { trigger: offerSection, start: "top 70%", once: true },
-          onComplete: () => {
-            offerSection.classList.add("off-done");
-            gsap.set([...heads, ...cards, ...ins], { clearProps: "opacity,transform,clipPath" });
-          },
-        })
-        .to(heads, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.12 }, 0)
-        .to(cards, { clipPath: shownClip, duration: 0.8, ease: "power3.inOut", stagger: 0.15 }, 0.25)
-        .to(ins, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.06 }, ">-0.4");
-    } catch (err) {
-      console.error("Offer intro failed, showing content statically:", err);
       document.documentElement.classList.add("seq-off");
     }
   }
@@ -222,6 +112,67 @@ if ("IntersectionObserver" in window) {
   revealEls.forEach((el) => el.classList.add("is-visible"));
 }
 
+// ---- Marquee follows the scroll ---------------------------------------------
+// The CSS animation keeps its base speed. Scrolling down speeds it up, scrolling
+// up runs it backwards; the extra rate eases back to normal once scrolling stops.
+const marqueeTrack = document.querySelector<HTMLElement>(".marquee-track");
+const marqueeAnim = marqueeTrack?.getAnimations()[0];
+if (marqueeAnim) {
+  const period = Number(marqueeAnim.effect?.getComputedTiming().duration ?? 0);
+  let extra = 0; // added to the base rate of 1; below -1 the strip runs backwards
+  let running = false;
+  let prevY = window.scrollY;
+  let prevT = performance.now();
+  let frameT = prevT;
+
+  const apply = () => {
+    const rate = 1 + extra;
+    // A looping animation stops applying before time 0, so keep the clock a
+    // few periods ahead when running backwards (the loop is seamless).
+    if (rate < 0 && period > 0) {
+      const t = Number(marqueeAnim.currentTime ?? 0);
+      if (t < period * 2) marqueeAnim.currentTime = t + period * 20;
+    }
+    marqueeAnim.playbackRate = rate;
+  };
+
+  const tick = (now: number) => {
+    const dt = Math.min(now - frameT, 64);
+    frameT = now;
+    extra *= Math.exp(-dt / 350);
+    if (Math.abs(extra) < 0.02) {
+      extra = 0;
+      marqueeAnim.playbackRate = 1;
+      running = false;
+      return;
+    }
+    apply();
+    requestAnimationFrame(tick);
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const now = performance.now();
+      const dy = window.scrollY - prevY;
+      const dt = Math.max(now - prevT, 1);
+      prevY = window.scrollY;
+      prevT = now;
+      if (dy === 0) return;
+      const b = Math.min((Math.abs(dy) / dt) * 4, 6); // px/s / 250
+      const next = dy > 0 ? b : -(2 + b);
+      if (Math.sign(next) !== Math.sign(extra) || Math.abs(next) > Math.abs(extra)) extra = next;
+      apply();
+      if (!running) {
+        running = true;
+        frameT = now;
+        requestAnimationFrame(tick);
+      }
+    },
+    { passive: true }
+  );
+}
+
 // ---- Accordion (FAQ) -----------------------------------------------------
 document.querySelectorAll<HTMLElement>("[data-accordion-item]").forEach((item) => {
   const trigger = item.querySelector<HTMLElement>("[data-accordion-trigger]");
@@ -236,52 +187,177 @@ document.querySelectorAll<HTMLElement>("[data-accordion-item]").forEach((item) =
   });
 });
 
-// ---- Count-up stats --------------------------------------------------------
-const statEls = document.querySelectorAll<HTMLElement>("[data-count-to]");
-if (statEls.length && "IntersectionObserver" in window) {
-  const statIo = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target as HTMLElement;
-        const to = Number(el.dataset.countTo);
-        const suffix = el.dataset.suffix ?? "";
-        const counter = { val: 0 };
-        gsap.to(counter, {
-          val: to,
-          duration: 1.6,
-          ease: "power2.out",
-          onUpdate: () => {
-            el.textContent = Math.round(counter.val).toString() + suffix;
-          },
-        });
-        statIo.unobserve(el);
-      });
-    },
-    { threshold: 0.4 }
+// ---- KPI section ------------------------------------------------------------
+// Tiles are revealed bottom-to-top, the numbers spin in like odometers and the
+// unit dots (one per project, pilot, ...) light up. The static markup already
+// holds the final values, so nothing depends on this running.
+function setupOdometer(el: HTMLElement): () => void {
+  const text = el.dataset.odometer ?? "";
+  const fontSize = parseFloat(getComputedStyle(el).fontSize) || 16;
+
+  // Column widths follow the final digit so "14" is not spaced like "00".
+  const probe = document.createElement("span");
+  probe.style.cssText = "position:absolute;visibility:hidden;white-space:pre";
+  el.appendChild(probe);
+  const widthEm = (ch: string) => {
+    probe.textContent = ch;
+    return probe.getBoundingClientRect().width / fontSize;
+  };
+
+  const visual = document.createElement("span");
+  visual.className = "odo";
+  visual.setAttribute("aria-hidden", "true");
+  const reels: { reel: HTMLElement; digit: number }[] = [];
+  const chars: HTMLElement[] = [];
+
+  for (const ch of text) {
+    if (/\d/.test(ch)) {
+      const col = document.createElement("span");
+      col.className = "odo-col";
+      col.style.width = `${widthEm(ch)}em`;
+      const reel = document.createElement("span");
+      reel.className = "odo-reel";
+      for (let i = 0; i < 20; i++) {
+        const d = document.createElement("span");
+        d.className = "odo-digit";
+        d.textContent = String(i % 10);
+        reel.appendChild(d);
+      }
+      col.appendChild(reel);
+      visual.appendChild(col);
+      reels.push({ reel, digit: Number(ch) });
+    } else {
+      const c = document.createElement("span");
+      c.className = "odo-char";
+      c.textContent = ch;
+      visual.appendChild(c);
+      chars.push(c);
+    }
+  }
+
+  const sr = document.createElement("span");
+  sr.className = "sr-only";
+  sr.textContent = text;
+  el.replaceChildren(sr, visual);
+
+  gsap.set(chars, { opacity: 0, yPercent: 30 });
+  gsap.set(
+    reels.map((r) => r.reel),
+    { yPercent: 0 }
   );
-  statEls.forEach((el) => statIo.observe(el));
+
+  return () => {
+    reels.forEach(({ reel, digit }, i) => {
+      gsap.to(reel, {
+        yPercent: -((10 + digit) / 20) * 100,
+        duration: 1.9 + i * 0.4,
+        delay: i * 0.08,
+        ease: "power4.out",
+      });
+    });
+    gsap.to(chars, { opacity: 1, yPercent: 0, duration: 0.7, delay: 1.1, ease: "power3.out", stagger: 0.1 });
+  };
 }
 
-// ---- Testimonial carousel -------------------------------------------------
-const track = document.querySelector<HTMLElement>("[data-quote-track]");
-if (track) {
-  const slides = Array.from(track.children) as HTMLElement[];
-  const dots = document.querySelectorAll<HTMLElement>("[data-quote-dot]");
-  let index = 0;
-  const go = (i: number) => {
-    index = (i + slides.length) % slides.length;
-    track.style.transform = `translateX(-${index * 100}%)`;
-    dots.forEach((d, di) => d.setAttribute("data-active", String(di === index)));
-  };
-  document.querySelector("[data-quote-prev]")?.addEventListener("click", () => go(index - 1));
-  document.querySelector("[data-quote-next]")?.addEventListener("click", () => go(index + 1));
-  dots.forEach((d, di) => d.addEventListener("click", () => go(di)));
-  let auto = setInterval(() => go(index + 1), 7000);
-  track.closest("[data-quote-widget]")?.addEventListener("mouseenter", () => clearInterval(auto));
-  track.closest("[data-quote-widget]")?.addEventListener("mouseleave", () => {
-    auto = setInterval(() => go(index + 1), 7000);
+function runKpiIntro(kpi: HTMLElement) {
+  const tiles = Array.from(kpi.querySelectorAll<HTMLElement>(".k-tile"));
+  const ins = Array.from(kpi.querySelectorAll<HTMLElement>(".k-in"));
+  const plays = Array.from(kpi.querySelectorAll<HTMLElement>("[data-odometer]")).map(setupOdometer);
+  const dotGroups = tiles.map((t) => Array.from(t.querySelectorAll<HTMLElement>(".kdot")));
+  const allDots = dotGroups.flat();
+  const hiddenClip = "inset(100% 0px 0px 0px round 1.75rem)";
+  const shownClip = "inset(0% 0px 0px 0px round 1.75rem)";
+
+  gsap.set(tiles, { clipPath: hiddenClip });
+  gsap.set(ins, { opacity: 0, y: 16 });
+  gsap.set(allDots, { opacity: 0.18, scale: 0.5 });
+
+  const tl = gsap.timeline({
+    scrollTrigger: { trigger: kpi, start: "top 65%", once: true },
+    onComplete: () => {
+      kpi.classList.add("kpi-done");
+      gsap.set([...tiles, ...ins, ...allDots], { clearProps: "opacity,transform,clipPath" });
+    },
   });
+  tl.to(tiles, { clipPath: shownClip, duration: 0.9, ease: "power3.inOut", stagger: 0.12 }, 0.1)
+    .to(ins, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", stagger: 0.06 }, 0.6)
+    .add(() => plays.forEach((play) => play()), 0.7);
+  dotGroups.forEach((dots, i) => {
+    tl.to(dots, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)", stagger: { amount: 1.2 } }, 0.9 + i * 0.12);
+  });
+}
+
+const kpiSection = document.querySelector<HTMLElement>("[data-kpi]");
+if (kpiSection) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("seq-off");
+  } else {
+    let kpiStarted = false;
+    // If the fonts never settle, show the section statically instead of hiding it.
+    window.setTimeout(() => {
+      if (!kpiStarted) kpiSection.classList.add("kpi-done");
+    }, 4000);
+    document.fonts.ready.then(() => {
+      kpiStarted = true;
+      try {
+        runKpiIntro(kpiSection);
+      } catch (err) {
+        console.error("KPI intro failed, showing content statically:", err);
+        kpiSection.classList.add("kpi-done");
+      }
+    });
+  }
+}
+
+// ---- Testimonials -------------------------------------------------------------
+// Company tabs pick the quote. A progress line under the active tab advances to
+// the next one on its own (CSS animation) while the section is on screen.
+const quoteWidget = document.querySelector<HTMLElement>("[data-quotes-widget]");
+if (quoteWidget) {
+  const tabs = Array.from(quoteWidget.querySelectorAll<HTMLElement>("[data-quote-tab]"));
+  const panels = Array.from(quoteWidget.querySelectorAll<HTMLElement>("[data-quote-panel]"));
+  let current = 0;
+
+  const show = (i: number, focus = false) => {
+    current = (i + tabs.length) % tabs.length;
+    tabs.forEach((tab, ti) => {
+      const on = ti === current;
+      tab.dataset.active = String(on);
+      tab.setAttribute("aria-selected", String(on));
+      tab.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach((panel, pi) => {
+      panel.dataset.active = String(pi === current);
+    });
+    if (focus) tabs[current].focus();
+  };
+
+  tabs.forEach((tab, ti) => {
+    tab.addEventListener("click", () => show(ti));
+    tab.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        e.preventDefault();
+        show(current + 1, true);
+      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        show(current - 1, true);
+      }
+    });
+    // The progress line finishing means it is time for the next quote.
+    tab.addEventListener("animationend", () => {
+      if (tab.dataset.active === "true") show(current + 1);
+    });
+  });
+
+  // Only run the progress line while the widget is visible.
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(
+      ([entry]) => {
+        quoteWidget.dataset.live = String(entry.isIntersecting);
+      },
+      { threshold: 0.35 }
+    ).observe(quoteWidget);
+  }
 }
 
 // ---- Sticky nav -----------------------------------------------------------
