@@ -5,11 +5,12 @@ import { mountHeroFunnel } from "./components/hero-funnel";
 gsap.registerPlugin(ScrollTrigger);
 
 // Decorative only: must never block the rest of the page's interactivity.
-// Starts just after the hero CTA buttons begin fading in (their own reveal
-// delay is 240ms), rather than mounting instantly alongside the headline, or
-// waiting for their whole fade transition (~900ms) to finish first, which
-// stacked with the chart's own entrance animation felt sluggish.
+// Order in the hero: buttons fade in, then the glass panel grows from its
+// center, and only once it has finished does the chart mount and animate.
+let heroFunnelMounted = false;
 function mountHeroFunnelSafely() {
+  if (heroFunnelMounted) return;
+  heroFunnelMounted = true;
   try {
     mountHeroFunnel();
   } catch (err) {
@@ -17,10 +18,22 @@ function mountHeroFunnelSafely() {
   }
 }
 
-if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+const heroPanel = document.querySelector<HTMLElement>("[data-hero-panel]");
+if (!heroPanel || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  if (heroPanel) document.documentElement.classList.add("seq-off");
   mountHeroFunnelSafely();
 } else {
-  window.setTimeout(mountHeroFunnelSafely, 700);
+  // Grows from nothing (scale 0) at its center, quickly.
+  gsap.set(heroPanel, { scale: 0 });
+  gsap.to(heroPanel, {
+    scale: 1,
+    duration: 0.4,
+    delay: 0.8,
+    ease: "power3.out",
+    onComplete: mountHeroFunnelSafely,
+  });
+  // Safety net in case the tween never completes.
+  window.setTimeout(mountHeroFunnelSafely, 3000);
 }
 
 // ---- Hero chart scroll-collapse -------------------------------------------

@@ -126,6 +126,36 @@
     background: var(--color-blue-lightest);
   }
 
+  /* Slowly drifting blobs that mix the dark and light blue in the hero. */
+  @keyframes hero-flow-a {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(14%, 10%, 0) scale(1.15); }
+  }
+  @keyframes hero-flow-b {
+    from { transform: translate3d(-8%, 6%, 0) scale(1.05); }
+    to { transform: translate3d(10%, -8%, 0) scale(0.95); }
+  }
+  @keyframes hero-flow-c {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(-16%, -12%, 0) scale(1.2); }
+  }
+  .hero-blob {
+    will-change: transform;
+  }
+  .hero-blob-a { animation: hero-flow-a 14s ease-in-out infinite alternate; }
+  .hero-blob-b { animation: hero-flow-b 18s ease-in-out infinite alternate; }
+  .hero-blob-c { animation: hero-flow-c 16s ease-in-out infinite alternate; }
+
+  /* Glass panel behind the hero chart: grows from the center, then the chart mounts. */
+  html.js:not(.seq-off) [data-hero-panel] {
+    transform: scale(0);
+  }
+
+  /* Chart labels sit on the blue hero, so use light text there. */
+  [data-hero-funnel] {
+    --color-muted-foreground: rgb(255 255 255 / 0.88);
+  }
+
   /* Standalone circular icon buttons (e.g. testimonial carousel prev/next). */
   .btn-icon {
     width: 2rem;
@@ -260,6 +290,9 @@
       transition: none;
     }
     .marquee-track {
+      animation: none;
+    }
+    .hero-blob {
       animation: none;
     }
     html {

@@ -66,22 +66,21 @@
   <main id="top" class="overflow-x-hidden w-full max-w-full">
 
     <!-- Hero + "Worked alongside" strip fill exactly one viewport, so the strip sits right at the bottom edge. -->
-    <div class="min-h-[100svh] flex flex-col">
+    <div class="relative isolate min-h-[100svh] flex flex-col">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden -z-10" style="background: linear-gradient(135deg, #081a33 0%, #123f75 45%, #2f6aa6 75%, #8fb8de 100%);">
+      <div class="hero-blob hero-blob-a absolute -top-[30%] -left-[20%] w-[75%] h-full rounded-full blur-[90px]" style="background:#06152b;opacity:.9"></div>
+      <div class="hero-blob hero-blob-b absolute top-[10%] left-[25%] w-[55%] h-[80%] rounded-full blur-[100px]" style="background:#1a5496;opacity:.75"></div>
+      <div class="hero-blob hero-blob-c absolute -bottom-[35%] -right-[20%] w-[70%] h-[95%] rounded-full blur-[90px]" style="background:#a9cdea;opacity:.9"></div>
+    </div>
+
     <!-- ============================= HERO ============================= -->
     <section data-hero class="relative flex-1 flex items-center pt-28 pb-10 md:pt-32 md:pb-14">
-      <div class="pointer-events-none absolute inset-0 overflow-hidden -z-10">
-        <div
-          class="absolute inset-0"
-          style="background: radial-gradient(140% 120% at 100% 0%, rgba(13,53,98,0.38) 0%, rgba(26,84,150,0.24) 30%, rgba(122,171,212,0.14) 55%, transparent 82%);"
-        ></div>
-      </div>
-
       <div class="wrap w-full grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        <div class="lg:col-span-7">
-          <h1 class="reveal max-w-2xl text-[2.75rem] leading-[1.05] md:text-6xl lg:text-[4rem] tracking-tight font-semibold text-ink">
+        <div class="lg:col-span-6">
+          <h1 class="reveal max-w-2xl text-[2.75rem] leading-[1.05] md:text-6xl lg:text-[4rem] tracking-tight font-semibold text-white">
             neuvosight
           </h1>
-          <h2 class="reveal mt-4 max-w-lg font-accent italic text-3xl md:text-4xl leading-snug font-medium text-blue-dark" data-delay="0.12">
+          <h2 class="reveal mt-4 max-w-lg font-accent italic text-3xl md:text-4xl leading-snug font-medium text-blue-lightest" data-delay="0.12">
             We turn innovation complexity into clear next steps.
           </h2>
           <div class="reveal mt-9 flex flex-wrap items-center gap-4" data-delay="0.24">
@@ -91,12 +90,11 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
               </span>
             </a>
-            <a href="#method" class="btn btn-ghost">See the method</a>
           </div>
         </div>
 
-        <div class="lg:col-span-5 reveal" data-delay="0.15">
-          <div class="mx-auto max-w-lg">
+        <div class="lg:col-span-6 reveal" data-delay="0.15">
+          <div data-hero-panel class="mx-auto max-w-2xl rounded-[1.75rem] bg-[#06152b]/45 p-7 md:p-10 backdrop-blur-xl">
             <div data-hero-funnel role="img" aria-label="Funnel showing the share of projects passing each of the four gates: 100%, 45%, 22%, 10%" style="aspect-ratio: 1.4 / 1;"></div>
           </div>
         </div>
@@ -104,11 +102,11 @@
     </section>
 
     <!-- ============================= TRUST MARQUEE ============================= -->
-    <section class="border-y border-ink/[0.06] py-7 reveal" data-delay="1.0" data-reveal-immediate>
+    <section class="border-y border-white/15 bg-ink/25 py-7 reveal" data-delay="1.0" data-reveal-immediate>
       <div class="flex items-center gap-8 pl-6 md:pl-10">
-        <span class="hidden md:block shrink-0 text-xs font-semibold uppercase tracking-[0.16em] text-ink/40">Worked alongside</span>
+        <span class="hidden md:block shrink-0 text-xs font-semibold uppercase tracking-[0.16em] text-white/65">Worked alongside</span>
         <div class="overflow-hidden flex-1 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-          <div data-quote-track-ignore class="marquee-track flex items-center w-max text-ink/35 font-semibold text-lg tracking-tight">
+          <div data-quote-track-ignore class="marquee-track flex items-center w-max text-white/70 font-semibold text-lg tracking-tight">
             <span class="mr-16">Robert Bosch Venture Capital</span>
             <span class="mr-16">Unibite</span>
             <span class="mr-16">Phaneros</span>
