@@ -167,34 +167,22 @@ document.querySelectorAll<HTMLElement>("[data-year]").forEach((el) => {
 });
 
 // ---- Mobile nav --------------------------------------------------------
+// The hamburger <-> close icon morph is pure CSS, driven by aria-expanded.
 const navToggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
 const navMenu = document.querySelector<HTMLElement>("[data-nav-menu]");
-const navLines = document.querySelectorAll<HTMLElement>("[data-nav-line]");
 
 if (navToggle && navMenu) {
-  navToggle.addEventListener("click", () => {
-    const open = navMenu.dataset.open === "true";
-    navMenu.dataset.open = open ? "false" : "true";
-    navToggle.setAttribute("aria-expanded", String(!open));
-    if (navLines[0] && navLines[1]) {
-      if (!open) {
-        gsap.to(navLines[0], { rotate: 45, y: 6, duration: 0.4, ease: "power3.out" });
-        gsap.to(navLines[1], { rotate: -45, y: -6, duration: 0.4, ease: "power3.out" });
-      } else {
-        gsap.to(navLines, { rotate: 0, y: 0, duration: 0.4, ease: "power3.out" });
-      }
-    }
-    document.body.style.overflow = open ? "" : "hidden";
-  });
+  const setMenu = (open: boolean) => {
+    navMenu.dataset.open = String(open);
+    navToggle.setAttribute("aria-expanded", String(open));
+    document.body.style.overflow = open ? "hidden" : "";
+  };
 
-  navMenu.querySelectorAll("a").forEach((a) =>
-    a.addEventListener("click", () => {
-      navMenu.dataset.open = "false";
-      navToggle.setAttribute("aria-expanded", "false");
-      gsap.to(navLines, { rotate: 0, y: 0, duration: 0.3 });
-      document.body.style.overflow = "";
-    })
-  );
+  navToggle.addEventListener("click", () => setMenu(navMenu.dataset.open !== "true"));
+  navMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setMenu(false);
+  });
 }
 
 // ---- Scroll reveal -------------------------------------------------------

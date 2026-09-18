@@ -37,14 +37,14 @@
         </a>
       </div>
 
-      <button data-nav-toggle aria-expanded="false" aria-label="Toggle menu" class="lg:hidden relative w-10 h-10 flex items-center justify-center shrink-0">
-        <span data-nav-line class="absolute w-5 h-[1.5px] bg-white -translate-y-[4px]"></span>
-        <span data-nav-line class="absolute w-5 h-[1.5px] bg-white translate-y-[4px]"></span>
+      <button data-nav-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu" class="nav-toggle lg:hidden relative w-11 h-11 shrink-0">
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
       </button>
     </div>
 
     <!-- mobile menu -->
-    <div data-nav-menu data-open="false" class="lg:hidden fixed inset-0 top-0 z-40 bg-ink/97 backdrop-blur-2xl text-white opacity-0 pointer-events-none data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto transition-opacity duration-500">
+    <div id="mobile-menu" data-nav-menu data-open="false" class="lg:hidden fixed inset-0 top-0 z-40 bg-ink/97 backdrop-blur-2xl text-white opacity-0 pointer-events-none data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto transition-opacity duration-500">
       <div class="h-full flex flex-col justify-center items-center gap-7 text-2xl font-medium">
         <a href="#offer" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-100">Our offer</a>
         <a href="#method" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-150">Method</a>

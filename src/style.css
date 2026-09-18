@@ -43,6 +43,17 @@
 }
 
 @layer base {
+  /* Hide scrollbars everywhere; scrolling itself still works. */
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  *::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -288,6 +299,40 @@
   .site-header[data-solid] .site-header-inner {
     height: 4rem;
   }
+  /* Hamburger that morphs into a close icon; centered with margins (no
+     translate utilities) so the rotated lines cross exactly at the middle. */
+  .nav-toggle {
+    border-radius: 9px;
+  }
+  .nav-toggle:focus-visible {
+    outline: 2px solid rgb(255 255 255 / 0.7);
+    outline-offset: 2px;
+  }
+  .nav-toggle-line {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 22px;
+    height: 2px;
+    margin-left: -11px;
+    margin-top: -1px;
+    border-radius: 2px;
+    background: #fff;
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .nav-toggle-line:nth-child(1) {
+    transform: translateY(-5px);
+  }
+  .nav-toggle-line:nth-child(2) {
+    transform: translateY(5px);
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(1) {
+    transform: rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(2) {
+    transform: rotate(-45deg);
+  }
+
   .nav-link {
     color: rgb(255 255 255 / 0.78);
     transition: color 0.25s ease;
