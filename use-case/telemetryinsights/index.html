@@ -13,39 +13,44 @@
 <body class="bg-bg text-body antialiased">
   <div class="grain"></div>
 
-  <header data-nav-root class="fixed inset-x-0 top-0 z-50">
-    <div class="wrap pt-4 md:pt-5">
-      <nav class="nav-pill flex items-center justify-between gap-4 rounded-full pl-5 pr-2 py-2 md:pr-3">
-        <a href="/" class="font-semibold tracking-tight text-lg shrink-0">
-          <span class="text-ink">neuvo</span><span class="text-blue">sight</span>
-        </a>
-        <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-ink/80">
-          <a href="/#offer" class="hover:text-blue transition-colors">Our offer</a>
-          <a href="/#method" class="hover:text-blue transition-colors">Method</a>
-          <a href="/#use-cases" class="hover:text-blue transition-colors">Use cases</a>
-          <a href="/#team" class="hover:text-blue transition-colors">Team</a>
-          <a href="/#faq" class="hover:text-blue transition-colors">FAQ</a>
-        </div>
-        <div class="hidden lg:flex items-center gap-4">
-          <a href="/#contact" class="btn btn-primary group text-sm py-2.5">
-            I want to discuss my options
-            <span class="btn-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
-          </a>
-        </div>
-        <button data-nav-toggle aria-expanded="false" aria-label="Toggle menu" class="lg:hidden relative w-10 h-10 rounded-full flex items-center justify-center shrink-0">
-          <span data-nav-line class="absolute w-4 h-[1.5px] bg-ink -translate-y-[3px]"></span>
-          <span data-nav-line class="absolute w-4 h-[1.5px] bg-ink translate-y-[3px]"></span>
-        </button>
+  <header data-nav-root data-solid class="site-header fixed inset-x-0 top-0 z-50 text-white">
+    <div class="site-header-inner relative z-50 flex items-center justify-between gap-6 px-6 md:px-10 lg:grid lg:grid-cols-[1fr_auto_1fr]">
+      <a href="/" class="shrink-0 justify-self-start text-xl font-semibold tracking-tight">
+        <span class="text-white">neuvo</span><span class="text-blue-light">sight</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-9 text-sm font-medium" aria-label="Main">
+          <a href="/#offer" class="nav-link" aria-label="Our offer"><span><span class="roll-word"><span style="--i:0" data-text="Our">Our</span></span> <span class="roll-word"><span style="--i:1" data-text="offer">offer</span></span></span></a>
+          <a href="/#method" class="nav-link" aria-label="Method"><span><span class="roll-word"><span style="--i:0" data-text="Method">Method</span></span></span></a>
+          <a href="/#use-cases" class="nav-link" aria-label="Use cases"><span><span class="roll-word"><span style="--i:0" data-text="Use">Use</span></span> <span class="roll-word"><span style="--i:1" data-text="cases">cases</span></span></span></a>
+          <a href="/#team" class="nav-link" aria-label="Team"><span><span class="roll-word"><span style="--i:0" data-text="Team">Team</span></span></span></a>
+          <a href="/#faq" class="nav-link" aria-label="FAQ"><span><span class="roll-word"><span style="--i:0" data-text="FAQ">FAQ</span></span></span></a>
       </nav>
+
+      <div class="hidden lg:flex items-center justify-self-end">
+        <a href="/#contact" class="btn btn-primary group text-sm py-2.5">
+          I want to discuss my options
+          <span class="btn-arrow">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <button data-nav-toggle aria-expanded="false" aria-label="Toggle menu" class="lg:hidden relative w-10 h-10 flex items-center justify-center shrink-0">
+        <span data-nav-line class="absolute w-5 h-[1.5px] bg-white -translate-y-[4px]"></span>
+        <span data-nav-line class="absolute w-5 h-[1.5px] bg-white translate-y-[4px]"></span>
+      </button>
     </div>
+
+    <!-- mobile menu -->
     <div data-nav-menu data-open="false" class="lg:hidden fixed inset-0 top-0 z-40 bg-ink/97 backdrop-blur-2xl text-white opacity-0 pointer-events-none data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto transition-opacity duration-500">
       <div class="h-full flex flex-col justify-center items-center gap-7 text-2xl font-medium">
-        <a href="/#offer">Our offer</a>
-        <a href="/#method">Method</a>
-        <a href="/#use-cases">Use cases</a>
-        <a href="/#team">Team</a>
-        <a href="/#faq">FAQ</a>
-        <a href="/#contact" class="btn btn-on-dark mt-4">I want to discuss my options</a>
+        <a href="/#offer" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-100">Our offer</a>
+        <a href="/#method" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-150">Method</a>
+        <a href="/#use-cases" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-200">Use cases</a>
+        <a href="/#team" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[250ms]">Team</a>
+        <a href="/#faq" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-300">FAQ</a>
+        <a href="/#contact" class="btn btn-on-dark mt-4 opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[350ms]">I want to discuss my options</a>
       </div>
     </div>
   </header>

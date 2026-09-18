@@ -124,6 +124,43 @@ if (methodSeq) {
   }
 }
 
+// ---- Our offer intro --------------------------------------------------------
+// Heading rises in, the three cards are revealed bottom-to-top one after
+// another, then their content fades up.
+const offerSection = document.querySelector<HTMLElement>("[data-offer]");
+if (offerSection) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("seq-off");
+  } else {
+    try {
+      const heads = Array.from(offerSection.querySelectorAll<HTMLElement>(".off-head"));
+      const cards = Array.from(offerSection.querySelectorAll<HTMLElement>(".off-card"));
+      const ins = Array.from(offerSection.querySelectorAll<HTMLElement>(".off-in"));
+      const hiddenClip = "inset(100% 0px 0px 0px round 1.75rem)";
+      const shownClip = "inset(0% 0px 0px 0px round 1.75rem)";
+
+      gsap.set(heads, { opacity: 0, y: 24 });
+      gsap.set(cards, { clipPath: hiddenClip });
+      gsap.set(ins, { opacity: 0, y: 14 });
+
+      gsap
+        .timeline({
+          scrollTrigger: { trigger: offerSection, start: "top 70%", once: true },
+          onComplete: () => {
+            offerSection.classList.add("off-done");
+            gsap.set([...heads, ...cards, ...ins], { clearProps: "opacity,transform,clipPath" });
+          },
+        })
+        .to(heads, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.12 }, 0)
+        .to(cards, { clipPath: shownClip, duration: 0.8, ease: "power3.inOut", stagger: 0.15 }, 0.25)
+        .to(ins, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.06 }, ">-0.4");
+    } catch (err) {
+      console.error("Offer intro failed, showing content statically:", err);
+      document.documentElement.classList.add("seq-off");
+    }
+  }
+}
+
 // ---- Footer year -----------------------------------------------------
 document.querySelectorAll<HTMLElement>("[data-year]").forEach((el) => {
   el.textContent = String(new Date().getFullYear());
@@ -259,17 +296,24 @@ if (track) {
   });
 }
 
-// ---- Sticky nav shrink -----------------------------------------------------
+// ---- Sticky nav -----------------------------------------------------------
 const navRoot = document.querySelector<HTMLElement>("[data-nav-root]");
 if (navRoot) {
+  // Hides when scrolling down, comes back as soon as the user scrolls up.
   let lastY = window.scrollY;
-  window.addEventListener(
-    "scroll",
-    () => {
-      const y = window.scrollY;
-      navRoot.dataset.scrolled = String(y > 24);
-      lastY = y;
-    },
-    { passive: true }
-  );
+  const update = () => {
+    const y = window.scrollY;
+    navRoot.dataset.scrolled = String(y > 24);
+    const delta = y - lastY;
+    if (y <= 80) {
+      navRoot.dataset.hidden = "false";
+    } else if (delta > 6) {
+      navRoot.dataset.hidden = "true";
+    } else if (delta < -6) {
+      navRoot.dataset.hidden = "false";
+    }
+    if (Math.abs(delta) > 6) lastY = y;
+  };
+  update();
+  window.addEventListener("scroll", update, { passive: true });
 }
