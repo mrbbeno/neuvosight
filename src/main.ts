@@ -75,6 +75,26 @@ if (navToggle && navMenu) {
   });
 }
 
+// ---- Header "Tools" dropdown ---------------------------------------------
+// Hover and keyboard focus open it through CSS; a click toggles it too (touch
+// laptops), and an outside click or Escape closes it.
+const toolsMenu = document.querySelector<HTMLElement>("[data-dropdown]");
+if (toolsMenu) {
+  const trigger = toolsMenu.querySelector<HTMLButtonElement>("button");
+  const setToolsOpen = (open: boolean) => {
+    toolsMenu.dataset.open = String(open);
+    trigger?.setAttribute("aria-expanded", String(open));
+  };
+  trigger?.addEventListener("click", () => setToolsOpen(toolsMenu.dataset.open !== "true"));
+  toolsMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setToolsOpen(false)));
+  document.addEventListener("click", (e) => {
+    if (!toolsMenu.contains(e.target as Node)) setToolsOpen(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setToolsOpen(false);
+  });
+}
+
 // ---- Scroll reveal -------------------------------------------------------
 const revealEls = document.querySelectorAll<HTMLElement>(".reveal");
 if ("IntersectionObserver" in window) {
@@ -265,8 +285,8 @@ function runKpiIntro(kpi: HTMLElement) {
   const plays = Array.from(kpi.querySelectorAll<HTMLElement>("[data-odometer]")).map(setupOdometer);
   const dotGroups = tiles.map((t) => Array.from(t.querySelectorAll<HTMLElement>(".kdot")));
   const allDots = dotGroups.flat();
-  const hiddenClip = "inset(100% 0px 0px 0px round 1.75rem)";
-  const shownClip = "inset(0% 0px 0px 0px round 1.75rem)";
+  const hiddenClip = "inset(100% 0px 0px 0px round 1.5rem)";
+  const shownClip = "inset(0% 0px 0px 0px round 1.5rem)";
 
   gsap.set(tiles, { clipPath: hiddenClip });
   gsap.set(ins, { opacity: 0, y: 16 });
@@ -357,6 +377,178 @@ if (quoteWidget) {
       },
       { threshold: 0.35 }
     ).observe(quoteWidget);
+  }
+}
+
+// ---- Lower sections: masked headings, clip-revealed cards, staggered fades ---
+// Headings rise word by word out of a mask, cards open bottom-to-top with their
+// content following, everything else fades up in a stagger. Reduced motion (or
+// any failure) leaves the markup untouched.
+function splitWords(root: HTMLElement): HTMLElement[] {
+  const inners: HTMLElement[] = [];
+  const walk = (node: Node) => {
+    Array.from(node.childNodes).forEach((child) => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        const frag = document.createDocumentFragment();
+        (child.textContent ?? "").split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) {
+            frag.appendChild(document.createTextNode(" "));
+            return;
+          }
+          const outer = document.createElement("span");
+          outer.className = "sw";
+          const inner = document.createElement("span");
+          inner.className = "swi";
+          inner.textContent = part;
+          outer.appendChild(inner);
+          frag.appendChild(outer);
+          inners.push(inner);
+        });
+        node.replaceChild(frag, child);
+      } else if (child.nodeType === Node.ELEMENT_NODE) {
+        walk(child);
+      }
+    });
+  };
+  walk(root);
+  return inners;
+}
+
+function splitLetters(root: HTMLElement): HTMLElement[] {
+  const text = root.textContent ?? "";
+  root.textContent = "";
+  return Array.from(text).map((ch) => {
+    const span = document.createElement("span");
+    span.className = "fm-l";
+    span.textContent = ch;
+    root.appendChild(span);
+    return span;
+  });
+}
+
+function setupLowerMotion() {
+  const qsa = (sel: string) => Array.from(document.querySelectorAll<HTMLElement>(sel));
+
+  qsa("[data-split]").forEach((heading) => {
+    const words = splitWords(heading);
+    gsap.set(words, { yPercent: 115 });
+    heading.classList.add("split-ready");
+    const delay = Number(heading.dataset.splitDelay ?? 0);
+    ScrollTrigger.create({
+      trigger: heading,
+      start: "top 88%",
+      once: true,
+      onEnter: () =>
+        gsap.to(words, { yPercent: 0, duration: 1.1, delay, ease: "power4.out", stagger: 0.07, clearProps: "transform" }),
+    });
+  });
+
+  const fades = qsa("[data-fade]");
+  gsap.set(fades, { opacity: 0, y: 32 });
+  ScrollTrigger.batch(fades, {
+    start: "top 90%",
+    once: true,
+    onEnter: (els) =>
+      gsap.to(els, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out", stagger: 0.1, clearProps: "opacity,transform" }),
+  });
+
+  const pops = qsa("[data-pop]");
+  gsap.set(pops, { scale: 0 });
+  ScrollTrigger.batch(pops, {
+    start: "top 92%",
+    once: true,
+    onEnter: (els) =>
+      gsap.to(els, { scale: 1, duration: 0.7, delay: 0.2, ease: "back.out(2.2)", stagger: 0.12, clearProps: "transform" }),
+  });
+
+  const hiddenClip = "inset(100% 0px 0px 0px round 1.5rem)";
+  const shownClip = "inset(0% 0px 0px 0px round 1.5rem)";
+  const clips = qsa("[data-clip]");
+  const clipItems = (el: HTMLElement) => {
+    const host = el.dataset.clipIn ? el.querySelector<HTMLElement>(el.dataset.clipIn) : el;
+    return Array.from(host?.children ?? []) as HTMLElement[];
+  };
+  clips.forEach((el) => {
+    gsap.set(el, { clipPath: hiddenClip });
+    gsap.set(clipItems(el), { opacity: 0, y: 24 });
+  });
+  ScrollTrigger.batch(clips, {
+    start: "top 88%",
+    once: true,
+    onEnter: (els) => {
+      (els as HTMLElement[]).forEach((el, i) => {
+        const items = clipItems(el);
+        gsap
+          .timeline({
+            delay: i * 0.12,
+            onComplete: () => {
+              gsap.set([el, ...items], { clearProps: "clipPath,opacity,transform" });
+            },
+          })
+          .to(el, { clipPath: shownClip, duration: 0.9, ease: "power3.inOut" }, 0)
+          .add(() => el.classList.add("is-drawn"), 0.3)
+          .to(items, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.08 }, 0.35);
+      });
+    },
+  });
+
+  // A list that appears as one block: one trigger, children open in quick succession.
+  qsa("[data-cascade]").forEach((group) => {
+    const rows = Array.from(group.children) as HTMLElement[];
+    rows.forEach((row) => {
+      gsap.set(row, { clipPath: hiddenClip });
+      gsap.set(Array.from(row.children), { opacity: 0, y: 16 });
+    });
+    ScrollTrigger.create({
+      trigger: group,
+      start: "top 85%",
+      once: true,
+      onEnter: () => {
+        rows.forEach((row, i) => {
+          const kids = Array.from(row.children) as HTMLElement[];
+          gsap
+            .timeline({
+              delay: i * 0.06,
+              onComplete: () => {
+                gsap.set([row, ...kids], { clearProps: "clipPath,opacity,transform" });
+              },
+            })
+            .to(row, { clipPath: shownClip, duration: 0.5, ease: "power3.out" }, 0)
+            .to(kids, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.08);
+        });
+      },
+    });
+  });
+
+  const mark = document.querySelector<HTMLElement>("[data-letters]");
+  if (mark) {
+    const letters = splitLetters(mark);
+    mark.classList.add("is-split");
+    gsap.set(letters, { yPercent: 60, opacity: 0 });
+    ScrollTrigger.create({
+      trigger: mark,
+      start: "top 98%",
+      once: true,
+      onEnter: () =>
+        gsap.to(letters, { yPercent: 0, opacity: 1, duration: 1.3, ease: "power4.out", stagger: 0.06, clearProps: "transform,opacity" }),
+    });
+  }
+}
+
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.querySelectorAll("[data-clip]").forEach((el) => el.classList.add("is-drawn"));
+  document.querySelectorAll("[data-split]").forEach((el) => el.classList.add("split-ready"));
+} else {
+  try {
+    setupLowerMotion();
+  } catch (err) {
+    console.error("Lower section motion failed, showing content statically:", err);
+    document.querySelectorAll<HTMLElement>("[data-fade],[data-pop],[data-clip],[data-clip] *,[data-split] *,[data-letters] *").forEach((el) => {
+      gsap.set(el, { clearProps: "opacity,transform,clipPath" });
+    });
+    document.querySelectorAll("[data-clip]").forEach((el) => el.classList.add("is-drawn"));
+    document.querySelectorAll("[data-split]").forEach((el) => el.classList.add("split-ready"));
   }
 }
 

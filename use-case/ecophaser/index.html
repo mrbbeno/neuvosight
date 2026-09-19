@@ -24,6 +24,24 @@
           <a href="/#use-cases" class="nav-link" aria-label="Use cases"><span><span class="roll-word"><span style="--i:0" data-text="Use">Use</span></span> <span class="roll-word"><span style="--i:1" data-text="cases">cases</span></span></span></a>
           <a href="/#team" class="nav-link" aria-label="Team"><span><span class="roll-word"><span style="--i:0" data-text="Team">Team</span></span></span></a>
           <a href="/#faq" class="nav-link" aria-label="FAQ"><span><span class="roll-word"><span style="--i:0" data-text="FAQ">FAQ</span></span></span></a>
+          <div class="nav-dd" data-dropdown data-open="false">
+            <button type="button" class="nav-link inline-flex items-center gap-1.5" aria-haspopup="true" aria-expanded="false" aria-controls="tools-menu" aria-label="Tools">
+              <span><span class="roll-word"><span style="--i:0" data-text="Tools">Tools</span></span></span>
+              <svg class="nav-dd-chev" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dd-wrap">
+              <div id="tools-menu" class="nav-dd-panel">
+                <a href="https://finance.neuvosight.com/" target="_blank" rel="noopener" class="nav-dd-item">
+                  <span><strong>Finance</strong><small>finance.neuvosight.com</small></span>
+                  <svg class="nav-dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                </a>
+                <a href="https://quiz.neuvosight.com/" target="_blank" rel="noopener" class="nav-dd-item">
+                  <span><strong>Quiz</strong><small>quiz.neuvosight.com</small></span>
+                  <svg class="nav-dd-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
       </nav>
 
       <div class="hidden lg:flex items-center justify-self-end">
@@ -48,6 +66,11 @@
         <a href="/#use-cases" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-200">Use cases</a>
         <a href="/#team" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[250ms]">Team</a>
         <a href="/#faq" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-300">FAQ</a>
+        <div class="flex flex-col items-center gap-4 opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[330ms]">
+          <span class="text-xs font-semibold uppercase tracking-[0.16em] text-white/40">Tools</span>
+          <a href="https://finance.neuvosight.com/" target="_blank" rel="noopener" class="text-xl text-white/80">Finance</a>
+          <a href="https://quiz.neuvosight.com/" target="_blank" rel="noopener" class="text-xl text-white/80">Quiz</a>
+        </div>
         <a href="/#contact" class="btn btn-on-dark mt-4 opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[350ms]">I want to discuss my options</a>
       </div>
     </div>
@@ -67,8 +90,8 @@
         <div class="mt-6 grid lg:grid-cols-12 gap-10 items-end">
           <div class="reveal lg:col-span-8">
             <span class="eyebrow text-teal-dark">CleanTech · Energy Efficiency</span>
-            <h1 class="mt-4 text-4xl md:text-6xl leading-[1.05] tracking-tight font-semibold text-ink">ecoPhaser</h1>
-            <p class="mt-3 text-lg text-ink/60 max-w-xl">Phase-change climate ceilings for buildings.</p>
+            <h1 data-split data-split-delay="0.1" class="mt-4 text-4xl md:text-6xl leading-[1.05] tracking-tight font-semibold text-ink">ecoPhaser</h1>
+            <p data-fade class="mt-3 text-lg text-ink/60 max-w-xl">Phase-change climate ceilings for buildings.</p>
           </div>
         </div>
       </div>
@@ -77,7 +100,7 @@
     <!-- META GRID -->
     <section class="pb-20">
       <div class="wrap">
-        <div class="reveal rounded-[1.75rem] bg-teal-lightest p-6 md:p-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="reveal rounded-3xl bg-teal-lightest p-6 md:p-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div>
             <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-dark/70">Industry</p>
             <p class="mt-1.5 font-medium text-ink">Energy Efficiency / Building Technology</p>
@@ -109,8 +132,8 @@
     <!-- CHALLENGE -->
     <section class="py-20 bg-white">
       <div class="wrap grid lg:grid-cols-12 gap-10">
-        <div class="reveal lg:col-span-4">
-          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-ink">The Challenge</h2>
+        <div class="lg:col-span-4">
+          <h2 data-split class="text-2xl md:text-3xl font-semibold tracking-tight text-ink">The Challenge</h2>
         </div>
         <div class="reveal lg:col-span-8 max-w-2xl">
           <p class="text-lg leading-relaxed">
@@ -126,24 +149,24 @@
     <!-- APPROACH -->
     <section class="py-20">
       <div class="wrap">
-        <div class="reveal max-w-xl">
-          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-ink">The Approach</h2>
-          <p class="mt-3 text-lg leading-relaxed">Passive materials science combined with intelligent, demand-responsive control.</p>
+        <div class="max-w-xl">
+          <h2 data-split class="text-2xl md:text-3xl font-semibold tracking-tight text-ink">The Approach</h2>
+          <p data-fade class="mt-3 text-lg leading-relaxed">Passive materials science combined with intelligent, demand-responsive control.</p>
         </div>
         <div class="mt-10 grid sm:grid-cols-2 gap-5">
-          <div class="reveal rounded-2xl border border-ink/[0.08] p-7">
+          <div class="reveal rounded-3xl border border-ink/[0.08] p-7">
             <h3 class="font-semibold text-ink">Phase-change materials at the core</h3>
             <p class="mt-2.5 text-sm leading-relaxed">Integrated into the suspended climate ceiling, they store heat as indoor temperatures rise and release it as they fall, stabilizing climate without drafts or noise, cutting energy for both cooling and heating.</p>
           </div>
-          <div class="reveal rounded-2xl border border-ink/[0.08] p-7" data-delay="0.06">
+          <div class="reveal rounded-3xl border border-ink/[0.08] p-7" data-delay="0.06">
             <h3 class="font-semibold text-ink">Night charging, day cooling</h3>
             <p class="mt-2.5 text-sm leading-relaxed">Ceiling panels are cooled and "charged" overnight, then absorb excess heat during occupied hours, shifting climate load away from peak periods.</p>
           </div>
-          <div class="reveal rounded-2xl border border-ink/[0.08] p-7" data-delay="0.12">
+          <div class="reveal rounded-3xl border border-ink/[0.08] p-7" data-delay="0.12">
             <h3 class="font-semibold text-ink">AI-driven optimization</h3>
             <p class="mt-2.5 text-sm leading-relaxed">Operation is optimized each night based on forecasted outdoor temperatures, expected occupancy, and real-time electricity prices, running only when conditions and tariffs are most favorable.</p>
           </div>
-          <div class="reveal rounded-2xl border border-ink/[0.08] p-7" data-delay="0.18">
+          <div class="reveal rounded-3xl border border-ink/[0.08] p-7" data-delay="0.18">
             <h3 class="font-semibold text-ink">Integrated Building Management System</h3>
             <p class="mt-2.5 text-sm leading-relaxed">Centralizes climate, lighting, low-voltage, audio-video, and emergency systems into a single smart building ecosystem, tailored and expandable to client needs.</p>
           </div>
@@ -154,9 +177,9 @@
     <!-- RESULT -->
     <section class="py-20 bg-ink text-white">
       <div class="wrap">
-        <div class="reveal max-w-xl">
-          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">The Result</h2>
-          <p class="mt-3 text-lg leading-relaxed text-white/65">Validated in a live field trial at the Bcombinator headquarters in Barcelona, using identical upper floors as phase-change and reference levels for precise, floor-by-floor energy measurement.</p>
+        <div class="max-w-xl">
+          <h2 data-split class="text-2xl md:text-3xl font-semibold tracking-tight">The Result</h2>
+          <p data-fade class="mt-3 text-lg leading-relaxed text-white/65">Validated in a live field trial at the Bcombinator headquarters in Barcelona, using identical upper floors as phase-change and reference levels for precise, floor-by-floor energy measurement.</p>
         </div>
         <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div class="reveal">
@@ -183,16 +206,16 @@
     <!-- SIMILAR -->
     <section class="py-20 bg-white">
       <div class="wrap">
-        <h2 class="reveal text-xl font-semibold tracking-tight text-ink">Similar use cases</h2>
+        <h2 data-split class="text-xl font-semibold tracking-tight text-ink">Similar use cases</h2>
         <div class="mt-8 grid md:grid-cols-2 gap-5">
-          <a href="/use-case/unibite/" class="reveal group rounded-2xl bg-rose-lightest p-7 flex items-center justify-between gap-6">
+          <a href="/use-case/unibite/" class="reveal group rounded-3xl bg-rose-lightest p-7 flex items-center justify-between gap-6">
             <div>
               <span class="text-[11px] font-semibold uppercase tracking-[0.14em] text-rose">Sports Tech / MedTech</span>
               <h3 class="mt-1.5 text-lg font-semibold text-ink">Unibite</h3>
             </div>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-rose shrink-0 transition-transform duration-500 group-hover:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="/use-case/telemetryinsights/" class="reveal group rounded-2xl bg-blue-lightest p-7 flex items-center justify-between gap-6" data-delay="0.08">
+          <a href="/use-case/telemetryinsights/" class="reveal group rounded-3xl bg-blue-lightest p-7 flex items-center justify-between gap-6" data-delay="0.08">
             <div>
               <span class="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue">AI / Data Analytics</span>
               <h3 class="mt-1.5 text-lg font-semibold text-ink">Telemetry Insights</h3>
@@ -207,7 +230,7 @@
     <section id="contact" class="relative py-24 overflow-hidden bg-gradient-to-b from-blue-dark to-ink text-white">
       <div class="pointer-events-none absolute -top-20 right-0 w-[480px] h-[480px] rounded-full bg-blue/25 blur-[130px]"></div>
       <div class="wrap relative text-center">
-        <h2 class="reveal text-3xl md:text-4xl font-semibold tracking-tight max-w-xl mx-auto">Want a similar validation for your idea?</h2>
+        <h2 data-split class="text-3xl md:text-4xl font-semibold tracking-tight max-w-xl mx-auto">Want a similar validation for your idea?</h2>
         <div class="reveal mt-8 flex justify-center">
           <a href="https://calendly.com/ferenc-balazs-neuvosight" target="_blank" rel="noopener" class="btn btn-primary group">
             I want to discuss my options
