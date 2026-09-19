@@ -1,7 +1,31 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger);
+
+// ---- Smooth scrolling ------------------------------------------------------
+// Wheel scrolling is eased (Lenis) and driven by GSAP's ticker so ScrollTrigger
+// stays in sync. Touch keeps its native momentum; reduced motion opts out.
+const lenis = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ? null
+  : new Lenis({ lerp: 0.07, wheelMultiplier: 0.9 });
+if (lenis) {
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+
+  // In-page anchors glide instead of jumping.
+  document.addEventListener("click", (e) => {
+    const link = (e.target as Element).closest<HTMLAnchorElement>('a[href^="#"]');
+    const hash = link?.getAttribute("href") ?? "";
+    if (hash.length < 2) return;
+    const target = document.querySelector<HTMLElement>(hash);
+    if (!target) return;
+    e.preventDefault();
+    lenis.scrollTo(target);
+  });
+}
 
 // ---- Method section sequence ------------------------------------------------
 // 1) dots 01-04 (with their text) appear one after another, 2) each row's
@@ -66,6 +90,8 @@ if (navToggle && navMenu) {
     navMenu.dataset.open = String(open);
     navToggle.setAttribute("aria-expanded", String(open));
     document.body.style.overflow = open ? "hidden" : "";
+    if (open) lenis?.stop();
+    else lenis?.start();
   };
 
   navToggle.addEventListener("click", () => setMenu(navMenu.dataset.open !== "true"));

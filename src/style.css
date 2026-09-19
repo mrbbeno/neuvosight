@@ -54,8 +54,19 @@
     height: 0;
   }
 
-  html {
-    scroll-behavior: smooth;
+  /* Lenis smooth scroll (see main.ts). */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
   }
   body {
     background: var(--color-bg);
@@ -651,9 +662,9 @@
   /* Footer wordmark: oversized, fading out toward the bottom edge. */
   .footer-mark {
     font-size: 20vw;
-    line-height: 0.78;
-    padding-top: 0.06em;
-    background: linear-gradient(to bottom, rgb(255 255 255 / 0.28), rgb(255 255 255 / 0));
+    line-height: 0.82;
+    padding: 0.04em 0 0.26em;
+    background: linear-gradient(to bottom, rgb(255 255 255 / 0.13), rgb(255 255 255 / 0.03));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -665,7 +676,7 @@
     display: inline-block;
     padding: 0.1em 0.08em 0.3em 0;
     margin: -0.1em -0.08em -0.3em 0;
-    background: linear-gradient(to bottom, rgb(255 255 255 / 0.28), rgb(255 255 255 / 0));
+    background: linear-gradient(to bottom, rgb(255 255 255 / 0.13), rgb(255 255 255 / 0.03));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -752,9 +763,6 @@
     }
     .nav-link:hover .roll-word > span {
       transform: none;
-    }
-    html {
-      scroll-behavior: auto;
     }
   }
 }
