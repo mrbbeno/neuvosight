@@ -366,22 +366,25 @@
         <div data-quotes-widget class="mt-14 md:mt-20 grid lg:grid-cols-12 gap-10 lg:gap-20">
           <div role="tablist" aria-label="Clients" class="lg:col-span-4 flex flex-wrap lg:flex-col gap-x-8 gap-y-5 lg:pt-4">
             <button role="tab" id="quote-tab-0" aria-controls="quote-panel-0" aria-selected="true" tabindex="0" data-quote-tab data-fade data-active="true" class="tq-tab">
+              <span class="tq-idx" aria-hidden="true">01</span>
               <span class="tq-name">Unibite</span>
               <span class="tq-bar" aria-hidden="true"></span>
             </button>
             <button role="tab" id="quote-tab-1" aria-controls="quote-panel-1" aria-selected="false" tabindex="-1" data-quote-tab data-fade data-active="false" class="tq-tab">
+              <span class="tq-idx" aria-hidden="true">02</span>
               <span class="tq-name">Robert Bosch Venture Capital</span>
               <span class="tq-bar" aria-hidden="true"></span>
             </button>
             <button role="tab" id="quote-tab-2" aria-controls="quote-panel-2" aria-selected="false" tabindex="-1" data-quote-tab data-fade data-active="false" class="tq-tab">
+              <span class="tq-idx" aria-hidden="true">03</span>
               <span class="tq-name">Phaneros</span>
               <span class="tq-bar" aria-hidden="true"></span>
             </button>
           </div>
 
           <div data-fade class="lg:col-span-8 relative">
-            <span class="block font-accent italic text-[7rem] md:text-[10rem] leading-[0.7] text-blue-light/45 select-none" aria-hidden="true">&ldquo;</span>
-            <div class="tq-stage mt-4">
+            <span class="pointer-events-none absolute -top-8 -left-2 md:-left-10 font-accent italic text-[9rem] md:text-[15rem] leading-none text-white/[0.08] select-none" aria-hidden="true">&ldquo;</span>
+            <div class="tq-stage relative pt-6">
             <figure role="tabpanel" id="quote-panel-0" aria-labelledby="quote-tab-0" data-quote-panel data-active="true" class="tq-panel">
               <blockquote class="font-accent italic font-medium text-[1.75rem] sm:text-4xl md:text-[2.6rem] lg:text-[3rem] leading-[1.18] tracking-tight text-white">
                 Working with our mentor from the very beginning has been one of the most valuable assets to our progress: sharp business advice and leadership coaching with a measurable impact.
@@ -418,6 +421,12 @@
                 </span>
               </figcaption>
             </figure>
+            </div>
+
+            <div class="mt-10 flex items-center gap-3">
+              <button type="button" data-quote-prev aria-label="Previous quote" class="tq-nav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+              <button type="button" data-quote-next aria-label="Next quote" class="tq-nav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+              <span class="ml-3 text-sm font-semibold tabular-nums text-white/45"><span data-quote-count class="text-white">01</span> / 03</span>
             </div>
           </div>
         </div>
@@ -665,14 +674,19 @@
   </main>
 
   <!-- ============================= FOOTER ============================= -->
-  <footer class="relative overflow-hidden bg-ink text-white pt-20">
-    <div class="wrap">
+  <footer class="relative overflow-hidden bg-ink text-white pt-24">
+    <div class="pointer-events-none absolute -top-48 left-1/2 -translate-x-1/2 w-[80%] h-96 rounded-full bg-blue/25 blur-[130px]" aria-hidden="true"></div>
+    <div class="wrap relative">
       <div class="grid grid-cols-2 md:grid-cols-12 gap-x-6 gap-y-10 md:gap-10 pb-14">
         <div data-fade class="col-span-2 md:col-span-4">
           <a href="#top" class="font-semibold tracking-tight text-xl">
             <span class="text-white">neuvo</span><span class="text-blue-light">sight</span>
           </a>
-          <p class="mt-4 max-w-xs text-sm leading-relaxed text-white/55">We turn innovation complexity into clear next steps.</p>
+          <p class="mt-4 max-w-xs text-base leading-relaxed text-white/60">We turn innovation complexity into clear next steps.</p>
+          <a href="#top" class="group mt-8 inline-flex items-center gap-3 text-sm font-medium text-white/80 transition-colors hover:text-white">
+            <span class="size-11 rounded-full border border-white/20 flex items-center justify-center transition-colors duration-300 group-hover:bg-white group-hover:text-ink"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+            Back to top
+          </a>
         </div>
         <div data-fade class="md:col-span-2">
           <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/40">Navigate</p>
@@ -685,8 +699,8 @@
         <div data-fade class="md:col-span-3">
           <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/40">Tools</p>
           <div class="mt-4 flex flex-col gap-2.5 text-sm text-white/70">
-            <a href="https://finance.neuvosight.com/" target="_blank" rel="noopener" class="nav-link self-start" aria-label="Finance"><span><span class="roll-word"><span style="--i:0" data-text="Finance">Finance</span></span></span></a>
-            <a href="https://quiz.neuvosight.com/" target="_blank" rel="noopener" class="nav-link self-start" aria-label="Quiz"><span><span class="roll-word"><span style="--i:0" data-text="Quiz">Quiz</span></span></span></a>
+            <a href="https://finance.neuvosight.com/" target="_blank" rel="noopener" class="nav-link self-start inline-flex items-center gap-1.5" aria-label="Finance"><span><span class="roll-word"><span style="--i:0" data-text="Finance">Finance</span></span></span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="opacity-60" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+            <a href="https://quiz.neuvosight.com/" target="_blank" rel="noopener" class="nav-link self-start inline-flex items-center gap-1.5" aria-label="Quiz"><span><span class="roll-word"><span style="--i:0" data-text="Quiz">Quiz</span></span></span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="opacity-60" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
           </div>
         </div>
         <div data-fade class="col-span-2 md:col-span-3">

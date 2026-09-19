@@ -330,13 +330,36 @@ if (kpiSection) {
 }
 
 // ---- Testimonials -------------------------------------------------------------
-// Company tabs pick the quote. A progress line under the active tab advances to
-// the next one on its own (CSS animation) while the section is on screen.
+// Company tabs (or the arrows) pick the quote; its words rise into place. A
+// progress line under the active tab advances to the next quote on its own
+// (CSS animation) while the section is on screen.
 const quoteWidget = document.querySelector<HTMLElement>("[data-quotes-widget]");
 if (quoteWidget) {
   const tabs = Array.from(quoteWidget.querySelectorAll<HTMLElement>("[data-quote-tab]"));
   const panels = Array.from(quoteWidget.querySelectorAll<HTMLElement>("[data-quote-panel]"));
+  const counter = quoteWidget.querySelector<HTMLElement>("[data-quote-count]");
+  const animateWords = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let current = 0;
+  let started = false;
+
+  // Each quote is split into words that rise out of a mask when it appears.
+  const wordSets = panels.map((panel) => {
+    const quote = panel.querySelector<HTMLElement>("blockquote");
+    if (!quote || !animateWords) return [] as HTMLElement[];
+    const words = splitWords(quote);
+    gsap.set(words, { yPercent: 115 });
+    return words;
+  });
+  const riseWords = (i: number, delay: number) => {
+    const words = wordSets[i];
+    if (!words?.length) return;
+    gsap.killTweensOf(words);
+    gsap.fromTo(
+      words,
+      { yPercent: 115 },
+      { yPercent: 0, duration: 0.9, delay, ease: "power4.out", stagger: 0.02 }
+    );
+  };
 
   const show = (i: number, focus = false) => {
     current = (i + tabs.length) % tabs.length;
@@ -349,6 +372,8 @@ if (quoteWidget) {
     panels.forEach((panel, pi) => {
       panel.dataset.active = String(pi === current);
     });
+    if (counter) counter.textContent = String(current + 1).padStart(2, "0");
+    if (started) riseWords(current, 0.2);
     if (focus) tabs[current].focus();
   };
 
@@ -368,15 +393,25 @@ if (quoteWidget) {
       if (tab.dataset.active === "true") show(current + 1);
     });
   });
+  quoteWidget.querySelector("[data-quote-prev]")?.addEventListener("click", () => show(current - 1));
+  quoteWidget.querySelector("[data-quote-next]")?.addEventListener("click", () => show(current + 1));
 
-  // Only run the progress line while the widget is visible.
+  // Only run the progress line while the widget is visible; the first quote
+  // types itself in the first time the widget comes into view.
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(
       ([entry]) => {
         quoteWidget.dataset.live = String(entry.isIntersecting);
+        if (entry.isIntersecting && !started) {
+          started = true;
+          riseWords(current, 0.35);
+        }
       },
       { threshold: 0.35 }
     ).observe(quoteWidget);
+  } else {
+    started = true;
+    riseWords(current, 0);
   }
 }
 
