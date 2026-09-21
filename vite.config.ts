@@ -17,6 +17,7 @@ export default defineConfig({
         privacy: resolve(__dirname, "privacy-policy/index.html"),
         terms: resolve(__dirname, "terms-and-conditions/index.html"),
         cookies: resolve(__dirname, "cookie-policy/index.html"),
+        legal: resolve(__dirname, "legal-notice/index.html"),
         telemetry: resolve(__dirname, "use-case/telemetryinsights/index.html"),
         unibite: resolve(__dirname, "use-case/unibite/index.html"),
       },
