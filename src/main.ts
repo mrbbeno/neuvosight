@@ -111,22 +111,14 @@ if (navToggle && navMenu) {
 }
 
 // ---- Header "Tools" dropdown ---------------------------------------------
-// Hover and keyboard focus open it through CSS; a click toggles it too (touch
-// laptops), and an outside click or Escape closes it.
+// Hover and keyboard focus open the menu through CSS. The "Tools" label itself is
+// a normal link to the Tools section; Escape closes the menu while it has focus.
 const toolsMenu = document.querySelector<HTMLElement>("[data-dropdown]");
 if (toolsMenu) {
-  const trigger = toolsMenu.querySelector<HTMLButtonElement>("button");
-  const setToolsOpen = (open: boolean) => {
-    toolsMenu.dataset.open = String(open);
-    trigger?.setAttribute("aria-expanded", String(open));
-  };
-  trigger?.addEventListener("click", () => setToolsOpen(toolsMenu.dataset.open !== "true"));
-  toolsMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setToolsOpen(false)));
-  document.addEventListener("click", (e) => {
-    if (!toolsMenu.contains(e.target as Node)) setToolsOpen(false);
-  });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") setToolsOpen(false);
+    if (e.key === "Escape" && toolsMenu.contains(document.activeElement)) {
+      (document.activeElement as HTMLElement).blur();
+    }
   });
 }
 
