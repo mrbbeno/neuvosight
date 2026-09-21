@@ -39,9 +39,6 @@
 
       <nav class="hidden lg:flex items-center gap-9 text-sm font-medium" aria-label="Main">
           <a href="/#method" class="nav-link" aria-label="Method"><span><span class="roll-word"><span style="--i:0" data-text="Method">Method</span></span></span></a>
-          <a href="/#use-cases" class="nav-link" aria-label="Use cases"><span><span class="roll-word"><span style="--i:0" data-text="Use">Use</span></span> <span class="roll-word"><span style="--i:1" data-text="cases">cases</span></span></span></a>
-          <a href="/#team" class="nav-link" aria-label="Team"><span><span class="roll-word"><span style="--i:0" data-text="Team">Team</span></span></span></a>
-          <a href="/#faq" class="nav-link" aria-label="FAQ"><span><span class="roll-word"><span style="--i:0" data-text="FAQ">FAQ</span></span></span></a>
           <div class="nav-dd" data-dropdown data-open="false">
             <button type="button" class="nav-link inline-flex items-center gap-1.5" aria-haspopup="true" aria-expanded="false" aria-controls="tools-menu" aria-label="Tools">
               <span><span class="roll-word"><span style="--i:0" data-text="Tools">Tools</span></span></span>
@@ -60,10 +57,13 @@
               </div>
             </div>
           </div>
+          <a href="/#use-cases" class="nav-link" aria-label="Use cases"><span><span class="roll-word"><span style="--i:0" data-text="Use">Use</span></span> <span class="roll-word"><span style="--i:1" data-text="cases">cases</span></span></span></a>
+          <a href="/#team" class="nav-link" aria-label="Team"><span><span class="roll-word"><span style="--i:0" data-text="Team">Team</span></span></span></a>
+          <a href="/#faq" class="nav-link" aria-label="FAQ"><span><span class="roll-word"><span style="--i:0" data-text="FAQ">FAQ</span></span></span></a>
       </nav>
 
       <div class="hidden lg:flex items-center justify-self-end">
-        <a href="/#contact" class="btn btn-primary group text-sm py-2.5">
+        <a href="https://calendly.com/ferenc-balazs-neuvosight" target="_blank" rel="noopener" class="btn btn-primary group text-sm py-2.5">
           I want to discuss my options
           <span class="btn-arrow">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
@@ -81,20 +81,20 @@
     <div id="mobile-menu" data-nav-menu data-open="false" class="lg:hidden fixed inset-0 top-0 z-40 bg-ink/97 backdrop-blur-2xl text-white opacity-0 pointer-events-none data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto transition-opacity duration-500">
       <div class="h-full flex flex-col justify-center items-center gap-7 text-2xl font-medium">
         <a href="/#method" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-150">Method</a>
-        <a href="/#use-cases" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-200">Use cases</a>
-        <a href="/#team" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[250ms]">Team</a>
-        <a href="/#faq" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-300">FAQ</a>
-        <div class="flex flex-col items-center gap-4 opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[330ms]">
+        <div class="flex flex-col items-center gap-4 opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[200ms]">
           <span class="text-xs font-semibold uppercase tracking-[0.16em] text-white/40">Tools</span>
           <a href="https://finance.neuvosight.com/" target="_blank" rel="noopener" class="text-xl text-white/80">Finance</a>
           <a href="https://quiz.neuvosight.com/" target="_blank" rel="noopener" class="text-xl text-white/80">Quiz</a>
         </div>
-        <a href="/#contact" class="btn btn-on-dark mt-4 opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[350ms]">I want to discuss my options</a>
+        <a href="/#use-cases" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[250ms]">Use cases</a>
+        <a href="/#team" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-300">Team</a>
+        <a href="/#faq" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[350ms]">FAQ</a>
+        <a href="https://calendly.com/ferenc-balazs-neuvosight" target="_blank" rel="noopener" class="btn btn-on-dark mt-4 opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[400ms]">I want to discuss my options</a>
       </div>
     </div>
   </header>
 
-  <main class="overflow-x-hidden w-full max-w-full">
+  <main class="overflow-x-clip w-full max-w-full">
     <!-- HERO -->
     <section class="relative pt-36 pb-16 md:pt-44 md:pb-20">
       <div class="pointer-events-none absolute inset-x-0 top-0 h-[560px] overflow-hidden -z-10">
@@ -258,11 +258,18 @@
     <div class="wrap flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink/45 border-t border-ink/[0.08] pt-8">
       <p>© <span data-year></span> Neuvosight. All rights reserved.</p>
       <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-        <a href="/#" class="hover:text-ink transition-colors">Privacy Policy</a>
-        <a href="/#" class="hover:text-ink transition-colors">Terms &amp; Conditions</a>
-        <a href="/#" class="hover:text-ink transition-colors">Cookie Policy</a>
+        <a href="/privacy-policy/" class="hover:text-ink transition-colors">Privacy Policy</a>
+        <a href="/terms-and-conditions/" class="hover:text-ink transition-colors">Terms &amp; Conditions</a>
+        <a href="/cookie-policy/" class="hover:text-ink transition-colors">Cookie Policy</a>
       </div>
     </div>
   </footer>
+  <button type="button" data-to-top aria-label="Back to top" class="to-top">
+    <svg class="to-top-ring" viewBox="0 0 48 48" aria-hidden="true">
+      <circle class="to-top-track" cx="24" cy="24" r="22" />
+      <circle class="to-top-bar" cx="24" cy="24" r="22" />
+    </svg>
+    <svg class="to-top-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
 </body>
 </html>

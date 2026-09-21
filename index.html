@@ -40,9 +40,6 @@
 
       <nav class="hidden lg:flex items-center gap-9 text-sm font-medium" aria-label="Main">
           <a href="#method" class="nav-link" aria-label="Method"><span><span class="roll-word"><span style="--i:0" data-text="Method">Method</span></span></span></a>
-          <a href="#use-cases" class="nav-link" aria-label="Use cases"><span><span class="roll-word"><span style="--i:0" data-text="Use">Use</span></span> <span class="roll-word"><span style="--i:1" data-text="cases">cases</span></span></span></a>
-          <a href="#team" class="nav-link" aria-label="Team"><span><span class="roll-word"><span style="--i:0" data-text="Team">Team</span></span></span></a>
-          <a href="#faq" class="nav-link" aria-label="FAQ"><span><span class="roll-word"><span style="--i:0" data-text="FAQ">FAQ</span></span></span></a>
           <div class="nav-dd" data-dropdown data-open="false">
             <button type="button" class="nav-link inline-flex items-center gap-1.5" aria-haspopup="true" aria-expanded="false" aria-controls="tools-menu" aria-label="Tools">
               <span><span class="roll-word"><span style="--i:0" data-text="Tools">Tools</span></span></span>
@@ -61,10 +58,13 @@
               </div>
             </div>
           </div>
+          <a href="#use-cases" class="nav-link" aria-label="Use cases"><span><span class="roll-word"><span style="--i:0" data-text="Use">Use</span></span> <span class="roll-word"><span style="--i:1" data-text="cases">cases</span></span></span></a>
+          <a href="#team" class="nav-link" aria-label="Team"><span><span class="roll-word"><span style="--i:0" data-text="Team">Team</span></span></span></a>
+          <a href="#faq" class="nav-link" aria-label="FAQ"><span><span class="roll-word"><span style="--i:0" data-text="FAQ">FAQ</span></span></span></a>
       </nav>
 
       <div class="hidden lg:flex items-center justify-self-end">
-        <a href="#contact" class="btn btn-primary group text-sm py-2.5">
+        <a href="https://calendly.com/ferenc-balazs-neuvosight" target="_blank" rel="noopener" class="btn btn-primary group text-sm py-2.5">
           I want to discuss my options
           <span class="btn-arrow">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
@@ -82,20 +82,20 @@
     <div id="mobile-menu" data-nav-menu data-open="false" class="lg:hidden fixed inset-0 top-0 z-40 bg-ink/97 backdrop-blur-2xl text-white opacity-0 pointer-events-none data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto transition-opacity duration-500">
       <div class="h-full flex flex-col justify-center items-center gap-7 text-2xl font-medium">
         <a href="#method" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-150">Method</a>
-        <a href="#use-cases" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-200">Use cases</a>
-        <a href="#team" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[250ms]">Team</a>
-        <a href="#faq" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-300">FAQ</a>
-        <div class="flex flex-col items-center gap-4 opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[330ms]">
+        <div class="flex flex-col items-center gap-4 opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[200ms]">
           <span class="text-xs font-semibold uppercase tracking-[0.16em] text-white/40">Tools</span>
           <a href="https://finance.neuvosight.com/" target="_blank" rel="noopener" class="text-xl text-white/80">Finance</a>
           <a href="https://quiz.neuvosight.com/" target="_blank" rel="noopener" class="text-xl text-white/80">Quiz</a>
         </div>
-        <a href="#contact" class="btn btn-on-dark mt-4 opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[350ms]">I want to discuss my options</a>
+        <a href="#use-cases" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[250ms]">Use cases</a>
+        <a href="#team" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-300">Team</a>
+        <a href="#faq" class="opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[350ms]">FAQ</a>
+        <a href="https://calendly.com/ferenc-balazs-neuvosight" target="_blank" rel="noopener" class="btn btn-on-dark mt-4 opacity-0 translate-y-4 [[data-open=true]_&]:opacity-100 [[data-open=true]_&]:translate-y-0 transition-all duration-500 delay-[400ms]">I want to discuss my options</a>
       </div>
     </div>
   </header>
 
-  <main id="top" class="overflow-x-hidden w-full max-w-full">
+  <main id="top" class="overflow-x-clip w-full max-w-full">
 
     <!-- Hero + "Worked alongside" strip fill exactly one viewport, so the strip sits right at the bottom edge. -->
     <div class="relative isolate min-h-[100svh] flex flex-col">
@@ -116,7 +116,7 @@
             Decisions, not reports.
           </h2>
           <div class="reveal mt-9 flex flex-wrap items-center gap-4" data-delay="1.0">
-            <a href="#contact" class="btn btn-primary group">
+            <a href="https://calendly.com/ferenc-balazs-neuvosight" target="_blank" rel="noopener" class="btn btn-primary group">
               I want to discuss my options
               <span class="btn-arrow">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
@@ -213,7 +213,7 @@
 
             <div class="grid md:grid-cols-12 gap-5 md:gap-8 items-start">
               <div class="relative md:self-stretch md:col-span-1 flex md:justify-center">
-                <span class="seq-dot w-14 h-14 rounded-full bg-amber text-white font-semibold flex items-center justify-center shrink-0 ring-4 ring-white">03</span>
+                <span class="seq-dot w-14 h-14 rounded-full bg-amber text-ink font-semibold flex items-center justify-center shrink-0 ring-4 ring-white">03</span>
                 <div class="seq-line hidden md:block absolute left-[calc(50%-0.5px)] top-14 -bottom-14 w-px bg-gradient-to-b from-amber to-rose"></div>
               </div>
               <div class="seq-text md:col-span-6">
@@ -248,6 +248,60 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= TOOLS ============================= -->
+    <section id="tools" class="py-24 md:py-32 bg-blue-lightest">
+      <div class="wrap">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl md:text-[2.75rem] leading-[1.1] tracking-tight font-semibold text-ink" data-split>See how we think before you talk to us.</h2>
+          <p data-fade class="mt-5 text-lg leading-relaxed">
+            We built two of our internal instruments into free tools. No sign-up, no sales call attached. If the reasoning inside them is useful to you, that tells you more about us than a capability statement would.
+          </p>
+        </div>
+
+        <div class="mt-12 md:mt-14 grid lg:grid-cols-12 gap-4 md:gap-5">
+          <article data-clip class="tool-card tool-card-a flex flex-col rounded-3xl p-8 md:p-10 text-white lg:col-span-6">
+            <div>
+              <h3 class="font-accent italic font-medium text-4xl md:text-5xl tracking-tight leading-none">Valumetric</h3>
+              <p class="mt-4 max-w-xl text-base leading-relaxed text-white/80">Enter a handful of numbers, get a DCF, VC method, comparables and diagnostics in under 90 seconds. Three modes, each tuned to a different conversation.</p>
+            </div>
+            <ul class="mt-8 space-y-3.5 text-base leading-relaxed text-white/80">
+              <li class="flex gap-3.5"><span class="mt-[0.6rem] size-1.5 shrink-0 rounded-full bg-amber" aria-hidden="true"></span><span><strong class="font-semibold text-white">Idea:</strong> pre-launch, users, price and burn</span></li>
+              <li class="flex gap-3.5"><span class="mt-[0.6rem] size-1.5 shrink-0 rounded-full bg-amber" aria-hidden="true"></span><span><strong class="font-semibold text-white">Fundraise:</strong> what a VC attacks in the first ten minutes</span></li>
+              <li class="flex gap-3.5"><span class="mt-[0.6rem] size-1.5 shrink-0 rounded-full bg-amber" aria-hidden="true"></span><span><strong class="font-semibold text-white">M&amp;A:</strong> historicals, precedents, EV-to-equity bridge, buyer IRR</span></li>
+            </ul>
+            <div class="mt-auto pt-10">
+              <a href="https://finance.neuvosight.com/" target="_blank" rel="noopener" class="btn btn-primary group">
+                Open Valumetric
+                <span class="btn-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                </span>
+              </a>
+            </div>
+          </article>
+
+          <article data-clip class="tool-card tool-card-b flex flex-col rounded-3xl p-8 md:p-10 text-white lg:col-span-6">
+            <div>
+              <h3 class="font-accent italic font-medium text-4xl md:text-5xl tracking-tight leading-none">Venture Readiness Quiz</h3>
+              <p class="mt-4 text-base leading-relaxed text-white/80">An honest read on whether an idea is ready to go to market, scored across four dimensions. Most teams find out that the weak dimension is not the one they were worrying about.</p>
+            </div>
+            <ul class="mt-8 space-y-3.5 text-base leading-relaxed text-white/80">
+              <li class="flex gap-3.5"><span class="mt-[0.6rem] size-1.5 shrink-0 rounded-full bg-amber" aria-hidden="true"></span><span>Instant, personalised assessment</span></li>
+              <li class="flex gap-3.5"><span class="mt-[0.6rem] size-1.5 shrink-0 rounded-full bg-amber" aria-hidden="true"></span><span>Four dimensions, scored independently</span></li>
+              <li class="flex gap-3.5"><span class="mt-[0.6rem] size-1.5 shrink-0 rounded-full bg-amber" aria-hidden="true"></span><span>Three minutes, no account needed</span></li>
+            </ul>
+            <div class="mt-auto pt-10">
+              <a href="https://quiz.neuvosight.com/" target="_blank" rel="noopener" class="btn btn-primary group">
+                Take the quiz
+                <span class="btn-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                </span>
+              </a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -470,7 +524,7 @@
             <path class="draw" pathLength="1" d="M10 132H190" opacity="0.35" />
             <circle class="pop" cx="40" cy="70" r="4" fill="currentColor" stroke="none" />
             <circle class="pop" cx="95" cy="40" r="4" fill="currentColor" stroke="none" />
-            <circle class="pop" cx="155" cy="30" r="5.5" fill="#e6a23c" stroke="none" />
+            <circle class="pop" cx="155" cy="30" r="5.5" fill="#e6aa3b" stroke="none" />
               </svg>
               <div>
                 <h3 class="font-accent italic font-medium text-4xl lg:text-5xl tracking-tight leading-none">Telemetry Insights</h3>
@@ -491,7 +545,7 @@
             <path class="draw" pathLength="1" d="M60 40c0-11 9-20 20-20s20 9 20 20v30c0 22-18 40-40 40s-40-18-40-40" stroke-width="3.5" />
             <path class="draw" pathLength="1" d="M120 55l14-14 10 10-14 14z" opacity="0.85" />
             <path class="draw" pathLength="1" d="M30 128L50 128L58 113L66 143L74 128L170 128" stroke-width="2.5" />
-            <circle class="pop" cx="80" cy="40" r="6" fill="#e6a23c" stroke="none" />
+            <circle class="pop" cx="80" cy="40" r="6" fill="#e6aa3b" stroke="none" />
               </svg>
               <div>
                 <h3 class="font-accent italic font-medium text-4xl lg:text-5xl tracking-tight leading-none">Unibite</h3>
@@ -531,7 +585,7 @@
           </div>
 
           <div data-fade>
-            <span data-pop class="w-14 h-14 rounded-full bg-amber text-white font-semibold flex items-center justify-center">03</span>
+            <span data-pop class="w-14 h-14 rounded-full bg-amber text-ink font-semibold flex items-center justify-center">03</span>
             <h3 class="mt-5 text-xl font-semibold text-ink">Full innovation lifecycle</h3>
             <p class="mt-3 text-base leading-relaxed">From early concept and development through to market-ready products.</p>
           </div>
@@ -557,92 +611,122 @@
           <div data-accordion-item data-open="true" class="accordion-item faq-card">
             <button data-accordion-trigger class="w-full flex items-center gap-4 md:gap-6 px-6 md:px-8 py-5 md:py-6 text-left">
               <span class="faq-num w-6 shrink-0 text-sm font-semibold tabular-nums">01</span>
-              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">What is your methodology?</span>
+              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">What does Neuvosight do?</span>
               <span class="accordion-chevron faq-plus shrink-0 size-10 rounded-full flex items-center justify-center">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
               </span>
             </button>
-            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed">Our approach is built on Evidence-Based Validation. We combine engineering rigor (STEM background) with Lean Startup and Design Thinking, evaluating every innovation through Desirability, Feasibility, and Viability. Unlike traditional consultancies, we provide an auditable framework that delivers objective go/no-go recommendations based on real market data and technical stress-tests.</div></div></div>
+            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed"><p>Neuvosight runs structured validation for companies deciding whether a new technology, product line or startup pilot is worth committing to. Work is organised into four gates, and each gate ends in a go, pivot or stop recommendation with the supporting evidence.</p><p class="mt-4">We also run venture clienting and startup scouting: when a company has a specific technology problem and suspects a startup has already solved it, we find that startup, structure the pilot and manage it through to an operational decision.</p></div></div></div>
           </div>
           <div data-accordion-item data-open="false" class="accordion-item faq-card">
             <button data-accordion-trigger class="w-full flex items-center gap-4 md:gap-6 px-6 md:px-8 py-5 md:py-6 text-left">
               <span class="faq-num w-6 shrink-0 text-sm font-semibold tabular-nums">02</span>
-              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">Why is innovation critical for organisations today?</span>
+              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">Who do you work with?</span>
               <span class="accordion-chevron faq-plus shrink-0 size-10 rounded-full flex items-center justify-center">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
               </span>
             </button>
-            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed">In the current "pre-seed crisis," 90–95% of ideas fail due to a lack of rigorous validation. Innovation is no longer discretionary. It's a strategic survival mechanism. With tightening capital and shifting EU/global cycles (DefTech, AI), companies and investors need a filter to kill non-viable ideas early, protecting capital and reputation while accelerating high-potential winners.</div></div></div>
+            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed"><p>Small and mid-sized industrial companies, from roughly 15 employees upwards. Our deepest experience is in electronics manufacturing, industrial equipment and the automotive supply chain, and we work across B2B deep tech more broadly.</p><p class="mt-4">We are probably not the right fit if you want a long-term strategy retainer, a large implementation team, or a partner who avoids uncomfortable recommendations.</p></div></div></div>
           </div>
           <div data-accordion-item data-open="false" class="accordion-item faq-card">
             <button data-accordion-trigger class="w-full flex items-center gap-4 md:gap-6 px-6 md:px-8 py-5 md:py-6 text-left">
               <span class="faq-num w-6 shrink-0 text-sm font-semibold tabular-nums">03</span>
-              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">How does a typical collaboration work?</span>
+              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">How does an engagement start?</span>
               <span class="accordion-chevron faq-plus shrink-0 size-10 rounded-full flex items-center justify-center">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
               </span>
             </button>
-            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed">We're open to both project-based collaborations and retainer models. Every engagement solves a specific problem with a clear, high-impact output: <strong>tailored expertise</strong> rather than a one-size-fits-all framework, <strong>no initial commitment</strong>: everything starts with a 30-minute discovery conversation, no deck, no cost, and <strong>full confidentiality</strong> from the very first minute. We meet you exactly where you are and scale our involvement accordingly.</div></div></div>
+            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed"><p>With a 30-minute conversation. No cost, no deck, no commitment. We ask what decision is in front of you and tell you honestly whether we can help.</p><p class="mt-4">If we can, we scope a specific piece of work with a defined output. If we can't, we say so and point you somewhere more useful.</p></div></div></div>
           </div>
           <div data-accordion-item data-open="false" class="accordion-item faq-card">
             <button data-accordion-trigger class="w-full flex items-center gap-4 md:gap-6 px-6 md:px-8 py-5 md:py-6 text-left">
               <span class="faq-num w-6 shrink-0 text-sm font-semibold tabular-nums">04</span>
-              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">When should my company involve Neuvosight?</span>
+              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">What does it cost?</span>
               <span class="accordion-chevron faq-plus shrink-0 size-10 rounded-full flex items-center justify-center">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
               </span>
             </button>
-            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed">The right moment is before a larger commitment lands on the table, while the evidence is still incomplete and the decision is still genuinely open. We work most often with industrial SMEs and mid-sized manufacturers, corporate innovation units missing a reliable go/kill mechanism, university Technology Transfer Offices, and startups preparing for a funding round or corporate pilot. We're probably not the right fit for a long-term strategy retainer or a partner who avoids difficult recommendations to keep things comfortable.</div></div></div>
+            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed"><p>We work project-based, priced against a defined output rather than an open-ended retainer. A triage engagement is measured in days; a full validation programme runs over weeks.</p><p class="mt-4">You get a fixed scope and a fixed price before the work starts.</p></div></div></div>
           </div>
           <div data-accordion-item data-open="false" class="accordion-item faq-card">
             <button data-accordion-trigger class="w-full flex items-center gap-4 md:gap-6 px-6 md:px-8 py-5 md:py-6 text-left">
               <span class="faq-num w-6 shrink-0 text-sm font-semibold tabular-nums">05</span>
-              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">Who decides whether a project continues, pivots, or stops?</span>
+              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">Who decides whether a project continues, pivots or stops?</span>
               <span class="accordion-chevron faq-plus shrink-0 size-10 rounded-full flex items-center justify-center">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
               </span>
             </button>
-            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed">The decision is always yours. The evidence is always ours. Before each phase begins, we agree on explicit criteria for what "good enough to continue" looks like, and what should trigger a pivot or stop. Working inside a large industrial organisation, every project we recommended stopping was stopped, and every project we recommended continuing reached pilot stage. A kill recommendation isn't failure. It's often the most capital-efficient result a validation process can produce.</div></div></div>
+            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed"><p>The decision is always yours. The evidence is always ours. Before each stage begins we agree explicitly what "good enough to continue" looks like and what should trigger a pivot or a stop.</p><p class="mt-4">That means the recommendation at the end of each gate rests on something auditable rather than on gut feel or relationship dynamics. An external team with agreed criteria and no stake in the outcome is structurally better placed to make that call honestly than an internal team that has lived with the project for months.</p></div></div></div>
           </div>
           <div data-accordion-item data-open="false" class="accordion-item faq-card">
             <button data-accordion-trigger class="w-full flex items-center gap-4 md:gap-6 px-6 md:px-8 py-5 md:py-6 text-left">
               <span class="faq-num w-6 shrink-0 text-sm font-semibold tabular-nums">06</span>
-              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">What services does Neuvosight offer?</span>
+              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">How is Neuvosight different from a traditional innovation consultancy?</span>
               <span class="accordion-chevron faq-plus shrink-0 size-10 rounded-full flex items-center justify-center">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
               </span>
             </button>
-            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed">Three areas: <strong>venture clienting &amp; startup scouting</strong>: finding the startup that already solved your challenge and structuring the pilot, including a shared Venture Clienting Squad for SMEs; <strong>innovation validation</strong>: a structured program to find out whether an opportunity is real before resources get committed; and <strong>corporate innovation advisory</strong>: structuring decision gates, kill criteria, and organisational fit.</div></div></div>
+            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed"><p>Three things. We deliver decisions rather than frameworks: a go/no-go recommendation, a validated pilot design, a kill memo. We have operated from the inside, having built and run a large manufacturer's internal accelerator rather than advising on one. And we treat organisational fit as a first-order question.</p><p class="mt-4">The last point matters more than it sounds. The usual explanation for a failed innovation project is that the market wasn't there. In our experience, organisational misfit kills more projects than bad ideas do: a strong opportunity is invisible inside a company that expects returns early-stage reality cannot deliver, or that has no way to open a new sales channel.</p></div></div></div>
           </div>
           <div data-accordion-item data-open="false" class="accordion-item faq-card">
             <button data-accordion-trigger class="w-full flex items-center gap-4 md:gap-6 px-6 md:px-8 py-5 md:py-6 text-left">
               <span class="faq-num w-6 shrink-0 text-sm font-semibold tabular-nums">07</span>
-              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">How is Neuvosight different from other consultancies?</span>
+              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">What is the Venture Clienting Squad?</span>
               <span class="accordion-chevron faq-plus shrink-0 size-10 rounded-full flex items-center justify-center">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
               </span>
             </button>
-            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed">Three things: we deliver decisions, not frameworks: a go/no-go recommendation, a validated pilot design, a kill memo at every stage; we've actually operated from the inside, having built and run the internal startup accelerator of a large industrial company; and we understand why innovation projects actually die: organizational misfit kills more projects than bad ideas do, and spotting that mismatch early is half the work.</div></div></div>
+            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed"><p>A shared scouting and piloting programme for a group of non-competing companies. Each member brings its own technology challenges; the cost of scouting, screening and pilot management is spread across the group.</p><p class="mt-4">It also makes the programme more attractive to startups, because they are talking to several potential pilot partners at once rather than one.</p></div></div></div>
           </div>
           <div data-accordion-item data-open="false" class="accordion-item faq-card">
             <button data-accordion-trigger class="w-full flex items-center gap-4 md:gap-6 px-6 md:px-8 py-5 md:py-6 text-left">
               <span class="faq-num w-6 shrink-0 text-sm font-semibold tabular-nums">08</span>
-              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">Which industries and geographies do you serve?</span>
+              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">What free tools does Neuvosight offer?</span>
               <span class="accordion-chevron faq-plus shrink-0 size-10 rounded-full flex items-center justify-center">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
               </span>
             </button>
-            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed">Deepest experience at the intersection of industrial manufacturing, electronics, and automotive supply chain, and B2B deep-tech more broadly. Geographically focused on Europe, DACH most active, alongside Spain, Italy, Poland, and the Czech Republic. We work in English and German, mostly combining remote work with on-site sessions. Sweet spot: €20M–€500M revenue range.</div></div></div>
+            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed"><p>Two, both free and open without an account. Valumetric is a valuation engine that produces a DCF, VC method valuation, comparables and diagnostics from a handful of inputs, in idea, fundraise and M&amp;A modes. The Venture Readiness Quiz is a three-minute assessment scoring an idea's market readiness across four dimensions.</p><p class="mt-4">Both are built by our own team and reflect how we work. Neither is a lead-capture device with a tool attached.</p></div></div></div>
           </div>
           <div data-accordion-item data-open="false" class="accordion-item faq-card">
             <button data-accordion-trigger class="w-full flex items-center gap-4 md:gap-6 px-6 md:px-8 py-5 md:py-6 text-left">
               <span class="faq-num w-6 shrink-0 text-sm font-semibold tabular-nums">09</span>
-              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">How do you handle sensitive data?</span>
+              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">Which industries and regions do you cover?</span>
               <span class="accordion-chevron faq-plus shrink-0 size-10 rounded-full flex items-center justify-center">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
               </span>
             </button>
-            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed">Before any information changes hands, we sign NDAs and confidentiality agreements. We never reuse or repurpose client-specific material across projects, and outputs are exclusively owned by the client unless otherwise agreed. Where AI tools are used, no client data goes into model training and no information leaks into shared datasets. Practices align with EU data protection requirements and the ISO 56000 series on innovation management.</div></div></div>
+            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed"><p>Industrially, our deepest experience is at the intersection of manufacturing, electronics and the automotive supply chain. Geographically we work across Europe, with most activity in Central Europe and the DACH region. We work in English.</p><p class="mt-4">Engagements usually combine remote work with on-site sessions, so distance is rarely a blocker.</p></div></div></div>
+          </div>
+          <div data-accordion-item data-open="false" class="accordion-item faq-card">
+            <button data-accordion-trigger class="w-full flex items-center gap-4 md:gap-6 px-6 md:px-8 py-5 md:py-6 text-left">
+              <span class="faq-num w-6 shrink-0 text-sm font-semibold tabular-nums">10</span>
+              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">How do you handle confidential information?</span>
+              <span class="accordion-chevron faq-plus shrink-0 size-10 rounded-full flex items-center justify-center">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed"><p>NDAs and confidentiality agreements are signed before information changes hands. Nothing client-specific is reused or shared across projects, and the outputs we produce together are exclusively yours unless you agree otherwise.</p><p class="mt-4">Where we use AI tools, no client data goes into model training and nothing enters shared or public datasets. Our practices align with EU data protection requirements and the ISO 56000 series on innovation management.</p></div></div></div>
+          </div>
+          <div data-accordion-item data-open="false" class="accordion-item faq-card">
+            <button data-accordion-trigger class="w-full flex items-center gap-4 md:gap-6 px-6 md:px-8 py-5 md:py-6 text-left">
+              <span class="faq-num w-6 shrink-0 text-sm font-semibold tabular-nums">11</span>
+              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">How long does a validation project take?</span>
+              <span class="accordion-chevron faq-plus shrink-0 size-10 rounded-full flex items-center justify-center">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed"><p>A triage takes days. Problem and value validation typically runs four to eight weeks depending on how many customer conversations the evidence requires. A full programme through to pilot readiness runs several months.</p><p class="mt-4">We agree the timeline and the stage criteria before starting, and each gate is a genuine decision point where you can stop.</p></div></div></div>
+          </div>
+          <div data-accordion-item data-open="false" class="accordion-item faq-card">
+            <button data-accordion-trigger class="w-full flex items-center gap-4 md:gap-6 px-6 md:px-8 py-5 md:py-6 text-left">
+              <span class="faq-num w-6 shrink-0 text-sm font-semibold tabular-nums">12</span>
+              <span class="flex-1 text-base md:text-xl font-semibold tracking-tight leading-snug">Can you work alongside our internal innovation team?</span>
+              <span class="accordion-chevron faq-plus shrink-0 size-10 rounded-full flex items-center justify-center">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="accordion-panel"><div><div class="faq-a px-6 md:px-8 pb-7 pl-6 md:pl-[5.5rem] md:pr-16 text-base leading-relaxed"><p>Yes, and that is the common case. We are usually brought in for the parts internal teams find structurally hardest: setting decision gates, defining kill criteria, and judging whether an opportunity fits the organisation and not just the market.</p><p class="mt-4">We do not replace an internal team, and we do not need one to exist before we can start.</p></div></div></div>
           </div>
         </div>
       </div>
@@ -701,10 +785,6 @@
             <span class="text-white">neuvo</span><span class="text-blue-light">sight</span>
           </a>
           <p class="mt-4 max-w-xs text-base leading-relaxed text-white/60">We turn innovation complexity into clear next steps.</p>
-          <a href="#top" class="group mt-8 inline-flex items-center gap-3 text-sm font-medium text-white/80 transition-colors hover:text-white">
-            <span class="size-11 rounded-full border border-white/20 flex items-center justify-center transition-colors duration-300 group-hover:bg-white group-hover:text-ink"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
-            Back to top
-          </a>
         </div>
         <div data-fade class="md:col-span-2">
           <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/40">Navigate</p>
@@ -731,9 +811,10 @@
         <div data-fade class="md:col-span-2">
           <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/40">Legal</p>
           <div class="mt-4 flex flex-col gap-2.5 text-sm text-white/70">
-            <a href="#" class="nav-link self-start" aria-label="Privacy Policy"><span><span class="roll-word"><span style="--i:0" data-text="Privacy">Privacy</span></span> <span class="roll-word"><span style="--i:1" data-text="Policy">Policy</span></span></span></a>
-            <a href="#" class="nav-link self-start" aria-label="Terms & Conditions"><span><span class="roll-word"><span style="--i:0" data-text="Terms">Terms</span></span> <span class="roll-word"><span style="--i:1" data-text="&amp;">&amp;</span></span> <span class="roll-word"><span style="--i:2" data-text="Conditions">Conditions</span></span></span></a>
-            <a href="#" class="nav-link self-start" aria-label="Cookie Policy"><span><span class="roll-word"><span style="--i:0" data-text="Cookie">Cookie</span></span> <span class="roll-word"><span style="--i:1" data-text="Policy">Policy</span></span></span></a>
+            <a href="/privacy-policy/" class="nav-link self-start" aria-label="Privacy Policy"><span><span class="roll-word"><span style="--i:0" data-text="Privacy">Privacy</span></span> <span class="roll-word"><span style="--i:1" data-text="Policy">Policy</span></span></span></a>
+            <a href="/terms-and-conditions/" class="nav-link self-start" aria-label="Terms & Conditions"><span><span class="roll-word"><span style="--i:0" data-text="Terms">Terms</span></span> <span class="roll-word"><span style="--i:1" data-text="&amp;">&amp;</span></span> <span class="roll-word"><span style="--i:2" data-text="Conditions">Conditions</span></span></span></a>
+            <a href="/cookie-policy/" class="nav-link self-start" aria-label="Cookie Policy"><span><span class="roll-word"><span style="--i:0" data-text="Cookie">Cookie</span></span> <span class="roll-word"><span style="--i:1" data-text="Policy">Policy</span></span></span></a>
+            <button type="button" class="nav-link self-start text-left" data-cc="show-preferencesModal" aria-label="Cookie settings"><span><span class="roll-word"><span style="--i:0" data-text="Cookie">Cookie</span></span> <span class="roll-word"><span style="--i:1" data-text="settings">settings</span></span></span></button>
             <a href="#" class="nav-link self-start" aria-label="Legal Notice"><span><span class="roll-word"><span style="--i:0" data-text="Legal">Legal</span></span> <span class="roll-word"><span style="--i:1" data-text="Notice">Notice</span></span></span></a>
           </div>
         </div>
@@ -747,5 +828,12 @@
 
     <p data-letters class="footer-mark select-none text-center font-semibold tracking-[-0.06em] whitespace-nowrap" aria-hidden="true">neuvosight</p>
   </footer>
+  <button type="button" data-to-top aria-label="Back to top" class="to-top">
+    <svg class="to-top-ring" viewBox="0 0 48 48" aria-hidden="true">
+      <circle class="to-top-track" cx="24" cy="24" r="22" />
+      <circle class="to-top-bar" cx="24" cy="24" r="22" />
+    </svg>
+    <svg class="to-top-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
 </body>
 </html>

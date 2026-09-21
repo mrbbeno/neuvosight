@@ -1,6 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import { initCookieConsent } from "./consent";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,9 +24,17 @@ if (lenis) {
     const target = document.querySelector<HTMLElement>(hash);
     if (!target) return;
     e.preventDefault();
-    lenis.scrollTo(target);
+    const margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+    lenis.scrollTo(target, { offset: -margin });
   });
 }
+
+// ---- Cookie consent ----------------------------------------------------------
+// Scrolling is paused while the preferences dialog is open.
+initCookieConsent({
+  onPreferencesShow: () => lenis?.stop(),
+  onPreferencesHide: () => lenis?.start(),
+});
 
 // ---- Method section sequence ------------------------------------------------
 // 1) dots 01-04 (with their text) appear one after another, 2) each row's
@@ -507,11 +516,21 @@ function setupLowerMotion() {
 
   const fades = qsa("[data-fade]");
   gsap.set(fades, { opacity: 0, y: 32 });
-  ScrollTrigger.batch(fades, {
-    start: "top 90%",
-    once: true,
-    onEnter: (els) =>
-      gsap.to(els, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out", stagger: 0.1, clearProps: "opacity,transform" }),
+  // Footer items sit at the very end of the page and can never scroll up to the
+  // usual trigger line (their own 32px offset counts too), so they fire as soon
+  // as they enter the viewport.
+  const fadeGroups: [HTMLElement[], string][] = [
+    [fades.filter((el) => !el.closest("footer")), "top 90%"],
+    [fades.filter((el) => el.closest("footer")), "top 100%"],
+  ];
+  fadeGroups.forEach(([els, start]) => {
+    if (!els.length) return;
+    ScrollTrigger.batch(els, {
+      start,
+      once: true,
+      onEnter: (batch) =>
+        gsap.to(batch, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out", stagger: 0.1, clearProps: "opacity,transform" }),
+    });
   });
 
   const pops = qsa("[data-pop]");
@@ -611,6 +630,60 @@ if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     document.querySelectorAll("[data-clip]").forEach((el) => el.classList.add("is-drawn"));
     document.querySelectorAll("[data-split]").forEach((el) => el.classList.add("split-ready"));
   }
+}
+
+// ---- Back-to-top button --------------------------------------------------------
+// Appears once the page is scrolled a bit; its ring shows how far down you are.
+const toTop = document.querySelector<HTMLButtonElement>("[data-to-top]");
+const toTopBar = toTop?.querySelector<SVGCircleElement>(".to-top-bar");
+if (toTop && toTopBar) {
+  const circumference = 2 * Math.PI * 22;
+  const updateToTop = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    toTopBar.style.strokeDashoffset = String(circumference * (1 - progress));
+    toTop.dataset.visible = String(window.scrollY > 160);
+  };
+  updateToTop();
+  window.addEventListener("scroll", updateToTop, { passive: true });
+  window.addEventListener("resize", updateToTop);
+  toTop.addEventListener("click", () => {
+    if (lenis) lenis.scrollTo(0);
+    else window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// ---- Legal pages: keep the current section highlighted in the contents ------
+// The heading that last rose past roughly 60% of the screen height is "current",
+// so the highlight follows the eye a little ahead of the scroll.
+const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>(".legal-toc a"));
+if (tocLinks.length) {
+  const entries = tocLinks
+    .map((link) => ({ link, heading: document.getElementById(link.getAttribute("href")?.slice(1) ?? "") }))
+    .filter((e): e is { link: HTMLAnchorElement; heading: HTMLElement } => !!e.heading);
+  const nav = tocLinks[0].closest<HTMLElement>(".legal-toc");
+  let currentLink: HTMLAnchorElement | null = null;
+
+  const updateToc = () => {
+    let active = entries[0];
+    for (const entry of entries) {
+      if (entry.heading.getBoundingClientRect().top <= window.innerHeight * 0.6) active = entry;
+      else break;
+    }
+    if (active.link === currentLink) return;
+    currentLink = active.link;
+    tocLinks.forEach((a) => (a.dataset.active = String(a === active.link)));
+    // keep the highlighted entry visible when the list itself scrolls
+    if (nav && nav.scrollHeight > nav.clientHeight) {
+      const top = active.link.offsetTop - nav.offsetTop;
+      if (top < nav.scrollTop || top + active.link.offsetHeight > nav.scrollTop + nav.clientHeight) {
+        nav.scrollTop = top - nav.clientHeight / 2;
+      }
+    }
+  };
+  updateToc();
+  window.addEventListener("scroll", updateToc, { passive: true });
+  window.addEventListener("resize", updateToc);
 }
 
 // ---- Sticky nav -----------------------------------------------------------
