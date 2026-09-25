@@ -1,10 +1,10 @@
 @import "tailwindcss";
 @import "@fontsource-variable/manrope";
-@import "@fontsource-variable/cormorant-garamond";
+@import "@fontsource/noto-serif/300-italic.css";
 
 @theme {
   --font-sans: "Manrope Variable", "Manrope", ui-sans-serif, system-ui, sans-serif;
-  --font-accent: "Cormorant Garamond Variable", "Cormorant Garamond", serif;
+  --font-accent: "Noto Serif", serif;
 
   --color-bg: #f7f9fc;
   --color-ink: #1a2330;
@@ -43,15 +43,13 @@
 }
 
 @layer base {
-  /* Hide scrollbars everywhere; scrolling itself still works. */
-  * {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  *::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
+  /* Thin, unobtrusive scrollbar. Deliberately no ::-webkit-scrollbar-track
+     rule: defining one forces Chromium out of its native overlay scrollbar
+     into the old classic renderer, which always paints a visible rail
+     behind the thumb (no CSS value on -track makes that rail invisible). */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--color-ink) 25%, transparent) transparent;
   }
 
   /* Lenis smooth scroll (see main.ts). */
@@ -168,15 +166,27 @@
   .hero-blob-b { animation: hero-flow-b 18s ease-in-out infinite alternate; }
   .hero-blob-c { animation: hero-flow-c 16s ease-in-out infinite alternate; }
 
-  /* Header menu links: on hover each word rolls up once, one after another. */
+  /* Header menu links: on hover each word rolls up once, one after another.
+     The moving span gets promoted to its own GPU layer for the transform,
+     which on Chromium/Windows (Edge included) switches it from subpixel
+     ClearType text to grayscale antialiasing. The static ::after clone it
+     slides in from below stays on the normal paint layer with ClearType,
+     so the two glyph renders briefly disagree and the text visibly
+     flickers/doubles. Keeping the span permanently promoted (will-change)
+     and forcing grayscale AA on both real text and clone up front removes
+     the render-mode switch that causes it. */
   .roll-word {
     display: inline-block;
     position: relative;
     overflow: hidden;
     vertical-align: top;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   .roll-word > span {
     display: inline-block;
+    will-change: transform;
+    backface-visibility: hidden;
     transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
     transition-delay: calc(var(--i) * 45ms);
   }
@@ -399,6 +409,15 @@
     transition: color 0.25s ease;
   }
   .nav-link:hover {
+    color: #fff;
+  }
+
+  /* Footer links: a plain, quiet fade instead of the header's roll-up motion. */
+  .footer-link {
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+  .footer-link:hover {
     color: #fff;
   }
 
